@@ -1,2 +1,3 @@
-# bbuh_helpers
-chrome extension for bbuhot
+# BBUH Helpers
+
+a chrome extension for bbuhot.com

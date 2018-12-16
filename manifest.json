@@ -1,0 +1,17 @@
+{
+    "name": "BBUH!",
+    "version": "0.0.1",
+    "description": "BBUH! helpers.",
+    "background": {
+        "scripts": ["js/background.js"],
+        "persistent": false
+    },
+    "page_action": {
+        "default_popup": "html/popup.html"
+    },
+    "permissions": [
+        "tabs",
+        "https://bbs.bbuhot.com/*"
+    ],
+    "manifest_version": 2
+}
