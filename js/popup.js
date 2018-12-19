@@ -49,7 +49,7 @@
                     }
                     chrome.cookies.set(data);
                 }
-                callback();
+                callback(true);
             });
         });
     }
@@ -59,7 +59,7 @@
             for (var cookie of results) {
                 chrome.cookies.remove({url: 'https://bbs.bbuhot.com', name: cookie.name});
             }
-            callback();
+            callback(true);
         });
     }
 
@@ -81,7 +81,7 @@
 
         let switch_to_empty_profile = document.getElementById('switch_to_empty_profile');
         switch_to_empty_profile.addEventListener('click', function () {
-            removeAllCookies();
+            changeToEmptyProfile();
         });
     }
 
@@ -127,7 +127,19 @@
         });
     }
 
-    function batchUpdateHTML() {
+    function refreshTab() {
+        chrome.tabs.query({active: true, currentWindow: true}, function (tabs) {
+            chrome.tabs.reload(tabs[0].id, function () {
+                updateProfileListHTML();
+                updateCurrentProfileHTML();
+            });
+        });
+    }
+
+    function batchUpdateHTML(refresh) {
+        if (refresh) {
+            refreshTab();
+        }
         updateProfileListHTML();
         updateCurrentProfileHTML();
     }
