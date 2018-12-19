@@ -6,3 +6,9 @@ chrome.tabs.onUpdated.addListener(function (tabId, changeInfo, tab) {
         chrome.pageAction.hide(tabId);
     }
 });
+
+// TODO: remove this when all things works well
+// logging cookie changes
+chrome.cookies.onChanged.addListener(function (changeInfo) {
+    console.log("Cookie Changed " + JSON.stringify(changeInfo.cookie));
+});

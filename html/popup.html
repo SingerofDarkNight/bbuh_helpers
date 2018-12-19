@@ -4,7 +4,25 @@
         <meta http-equiv="content-type" content="text/html; charset=utf-8" />
     </head>
     <body>
-        <p>BBUH Helpers</p>
+        <header>
+            <p>Current Profile: <span id="current_profile">Empty Profile</span></p>
+            <div>
+                <a href="#" id="add_profile">Add Profile</a>
+                <a href="#" id="switch_to_empty_profile">Switch to Empty Profile</a>
+                <!-- TODO: remove these link below -->
+                <a href="#" id="remove_profile_name">Remove name profile</a>
+                <a href="#" id="switch_to_profile_name">Switch to name Profile</a>
+            </div>
+        </header>
+        <table>
+            <thead>
+                <tr>
+                    <th colspan="3">Profiles</th>
+                </tr>
+            </thead>
+            <tbody id="profile_list">
+            </tbody>
+        </table>
         <script src="../js/popup.js"></script>
     </body>
 </html>

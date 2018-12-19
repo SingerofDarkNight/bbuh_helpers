@@ -11,6 +11,8 @@
     },
     "permissions": [
         "tabs",
+        "cookies",
+        "storage",
         "https://bbs.bbuhot.com/*"
     ],
     "manifest_version": 2
