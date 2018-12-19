@@ -6,6 +6,10 @@
         "scripts": ["js/background.js"],
         "persistent": false
     },
+    "content_scripts": [{
+        "matches": ["https://bbs.bbuhot.com/*"],
+        "js": ["js/user_info.js"]
+    }],
     "page_action": {
         "default_popup": "html/popup.html"
     },
