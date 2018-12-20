@@ -2,6 +2,11 @@
     "name": "BBUH!",
     "version": "0.0.1",
     "description": "BBUH! helpers.",
+    "icons": {
+        "16": "icons/icon16x16.png",
+        "48": "icons/icon48x48.png",
+        "128": "icons/icon128x128.png"
+    },
     "background": {
         "scripts": ["js/background.js"],
         "persistent": false
@@ -11,7 +16,8 @@
         "js": ["js/user_info.js"]
     }],
     "page_action": {
-        "default_popup": "html/popup.html"
+        "default_popup": "html/popup.html",
+        "default_icon": "icons/icon19x19.png"
     },
     "permissions": [
         "tabs",
