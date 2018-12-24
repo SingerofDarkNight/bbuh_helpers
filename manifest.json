@@ -1,6 +1,6 @@
 {
     "name": "BBUH!",
-    "version": "0.0.1",
+    "version": "0.0.2",
     "description": "BBUH! helpers.",
     "icons": {
         "16": "icons/icon16x16.png",
@@ -14,9 +14,16 @@
     "content_scripts": [{
         "matches": ["https://bbs.bbuhot.com/*"],
         "js": ["js/user_info.js"]
+    }, {
+        "matches": [
+            "https://bbs.bbuhot.com/thread-*-*-*.html",
+            "https://bbs.bbuhot.com/forum.php?mod=viewthread*"
+        ],
+        "js": ["js/modify_thread.js"],
+        "run_at": "document_start"
     }],
     "page_action": {
-        "default_popup": "html/popup.html",
+        "default_popup": "html/profiles.html",
         "default_icon": "icons/icon19x19.png"
     },
     "permissions": [
