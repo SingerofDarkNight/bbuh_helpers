@@ -28,7 +28,8 @@ chrome.runtime.onInstalled.addListener(function (details) {
                 settings: {
                     // TODO: prepopulating the rigid data might not be a good
                     // idea
-                    user_levels: [9, 32, 10, 11, 12, 13, 14, 15, 28, 29, 30, 31]
+                    user_levels: [9, 32, 10, 11, 12, 13, 14, 15, 28, 29, 30, 31],
+                    main_post_label: '基地'
                 }
             });
         }
