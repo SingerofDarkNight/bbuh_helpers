@@ -63,26 +63,51 @@
         });
     }
 
+    function refreshTab() {
+        chrome.tabs.query({active: true, currentWindow: true}, function (tabs) {
+            chrome.tabs.reload(tabs[0].id, function () {
+                updateProfileListHTML();
+                updateCurrentProfileHTML();
+            });
+        });
+    }
+
+    function createProfileListener(event) {
+        addProfile(batchUpdateHTML);
+    }
+
+    function changeProfileListener(event) {
+        let uid = event.target.getAttribute('data-profileuid');
+        switchToProfile(uid, batchUpdateHTML);
+    }
+
+    function changeToEmptyProfileListener(event) {
+        removeAllCookies(batchUpdateHTML);
+    }
+
+    function deleteProfileListener(event) {
+        let uid = event.target.getAttribute('data-profileuid');
+        removeProfile(uid, batchUpdateHTML);
+    }
+
     function addProfileListeners() {
         let sp_els = document.getElementsByClassName('switch_profile');
         for (var el of sp_els) {
-            el.addEventListener('click', changeProfile, false);
+            el.addEventListener('click', changeProfileListener, false);
         }
 
         let rp_els = document.getElementsByClassName('remove_profile');
         for (var el of rp_els) {
-            el.addEventListener('click', deleteProfile, false);
+            el.addEventListener('click', deleteProfileListener, false);
         }
     }
 
     function addCommonListeners() {
         let add_profile = document.getElementById('add_profile');
-        add_profile.addEventListener('click', createProfile, false);
+        add_profile.addEventListener('click', createProfileListener, false);
 
         let switch_to_empty_profile = document.getElementById('switch_to_empty_profile');
-        switch_to_empty_profile.addEventListener('click', function () {
-            changeToEmptyProfile();
-        });
+        switch_to_empty_profile.addEventListener('click', changeToEmptyProfileListener, false);
     }
 
     function updateCurrentProfileHTML() {
@@ -127,53 +152,18 @@
         });
     }
 
-    function refreshTab() {
-        chrome.tabs.query({active: true, currentWindow: true}, function (tabs) {
-            chrome.tabs.reload(tabs[0].id, function () {
-                updateProfileListHTML();
-                updateCurrentProfileHTML();
-            });
-        });
-    }
-
     function batchUpdateHTML(refresh) {
         if (refresh) {
             refreshTab();
+        } else {
+            updateProfileListHTML();
+            updateCurrentProfileHTML();
         }
-        updateProfileListHTML();
-        updateCurrentProfileHTML();
-    }
-
-    function createProfile(event) {
-        addProfile(batchUpdateHTML);
-    }
-
-    function changeProfile(event) {
-        let uid = event.target.getAttribute('data-profileuid');
-        switchToProfile(uid, batchUpdateHTML);
-    }
-
-    function changeToEmptyProfile(event) {
-        removeAllCookies(batchUpdateHTML);
-    }
-
-    function deleteProfile(event) {
-        let uid = event.target.getAttribute('data-profileuid');
-        removeProfile(uid, batchUpdateHTML);
     }
 
     function init() {
-        chrome.storage.local.get('profiles', function (items) {
-            // initialize the profile before any operation
-            if (isEmpty(items)) {
-                chrome.storage.local.set({profiles: {}});
-            }
-
-            addCommonListeners();
-
-            batchUpdateHTML();
-
-        });
+        addCommonListeners();
+        batchUpdateHTML();
     }
 
     init();
