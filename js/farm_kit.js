@@ -89,8 +89,12 @@
     }
 
     function init(){
-        addCopyPostHTML();
-        addCopySignHTML();
+        chrome.storage.local.get('settings', function (items) {
+            if (items.settings.enable_farm_kit) {
+                addCopyPostHTML();
+                addCopySignHTML();
+            }
+        });
     }
 
     init();
