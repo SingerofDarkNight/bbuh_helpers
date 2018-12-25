@@ -152,6 +152,7 @@
         });
     }
 
+    // TODO: can't update current profile after switching profile
     function batchUpdateHTML(refresh) {
         if (refresh) {
             refreshTab();
