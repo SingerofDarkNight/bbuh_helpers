@@ -1,6 +1,6 @@
 {
     "name": "BBUH!",
-    "version": "0.0.3",
+    "version": "0.0.4",
     "description": "BBUH! helpers.",
     "icons": {
         "16": "icons/icon16x16.png",
@@ -29,6 +29,10 @@
             "https://bbs.bbuhot.com/*mod=forumdisplay*"
         ],
         "js": ["js/farm_kit.js"],
+        "run_at": "document_end"
+    }, {
+        "matches": ["https://bbs.bbuhot.com/dsu_paulsign-sign.html"],
+        "js": ["js/auto_sign.js"],
         "run_at": "document_end"
     }],
     "page_action": {
