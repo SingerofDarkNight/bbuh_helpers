@@ -27,6 +27,7 @@
         return el;
     }
 
+    // TODO: find a better to deal with this
     function hideUserGroups(node, misc, settings) {
         if (node.nodeName.toLowerCase() == 'a' &&
             node.hasAttribute('href')) {
