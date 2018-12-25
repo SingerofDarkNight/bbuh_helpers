@@ -29,7 +29,9 @@ chrome.runtime.onInstalled.addListener(function (details) {
                     // TODO: prepopulating the rigid data might not be a good
                     // idea
                     user_levels: [9, 32, 10, 11, 12, 13, 14, 15, 28, 29, 30, 31],
-                    main_post_label: '基地'
+                    main_post_label: '基地',
+                    enable_auto_sign: true,
+                    enable_farm_kit: true
                 }
             });
         }

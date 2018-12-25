@@ -55,9 +55,12 @@
         form.submit();
     }
 
-    // TODO: add settings to disable this
     function init() {
-        quickSign();
+        chrome.storage.local.get('settings', function (items) {
+            if (items.settings.enable_auto_sign) {
+                quickSign();
+            }
+        });
     }
 
     init();
