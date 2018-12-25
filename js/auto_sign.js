@@ -43,16 +43,16 @@
         if (isSigned()) {
             return;
         }
-        selectRandomEmoji();
+
         try {
+            selectRandomEmoji();
             let mode = selectRandomMode();
             handleMode(mode);
+            let form = document.getElementById('qiandao');
+            form.submit();
         } catch(e) {
             console.log(e);
         }
-
-        let form = document.getElementById('qiandao');
-        form.submit();
     }
 
     function init() {
