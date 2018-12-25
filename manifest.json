@@ -30,6 +30,10 @@
         ],
         "js": ["js/farm_kit.js"],
         "run_at": "document_end"
+    }, {
+        "matches": ["https://bbs.bbuhot.com/dsu_paulsign-sign.html"],
+        "js": ["js/auto_sign.js"],
+        "run_at": "document_end"
     }],
     "page_action": {
         "default_popup": "html/profiles.html",
