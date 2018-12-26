@@ -7,19 +7,32 @@
         return true;
     }
 
-    function addProfile(callback) {
+    function getUserInfo(callback) {
+        chrome.tabs.query({active: true, currentWindow: true}, function (tabs) {
+            chrome.tabs.sendMessage(tabs[0].id, {type: 'user_info'}, callback);
+        });
+    }
+
+    function getProfilesAndCookies(callback) {
         chrome.storage.local.get('profiles', function (items) {
             chrome.cookies.getAll({domain: 'bbuhot.com'}, function (results) {
-                chrome.tabs.query({active: true, currentWindow: true}, function (tabs) {
-                    chrome.tabs.sendMessage(tabs[0].id, {type: 'user_info'}, function (response) {
-                        items.profiles[response.uid] = {
-                            "username": response.username,
-                            "cookies": results
-                        };
-                        chrome.storage.local.set({profiles: items.profiles});
+                callback(items, results);
+            });
+        });
+    }
+
+    function addProfile(callback) {
+        getProfilesAndCookies(function(items, results) {
+            getUserInfo(function (response) {
+                if (response) {
+                    items.profiles[response.uid] = {
+                        "username": response.username,
+                        "cookies": results
+                    };
+                    chrome.storage.local.set({profiles: items.profiles}, function () {
                         callback();
                     });
-                });
+                }
             });
         });
     }
@@ -27,29 +40,58 @@
     function removeProfile(uid, callback) {
         chrome.storage.local.get('profiles', function (items) {
             delete items.profiles[uid];
-            chrome.storage.local.set({profiles: items.profiles});
-            callback();
+            chrome.storage.local.set({profiles: items.profiles}, function () {
+                callback();
+            });
         });
     }
 
     function switchToProfile(uid, callback) {
-        chrome.storage.local.get('profiles', function (items) {
-            chrome.cookies.getAll({domain: 'bbuhot.com'}, function (results) {
-                for (var cookie of results) {
-                    chrome.cookies.remove({url: 'https://bbs.bbuhot.com', name: cookie.name});
-                }
-                let cookies = items.profiles[uid].cookies;
-
-                for (var cookie of cookies) {
-                    var data = {url: 'https://bbs.bbuhot.com'};
-                    for (var k in cookie) {
-                        if (k != 'session' && k !=  'hostOnly') {
-                            data[k] = cookie[k];
+        getProfilesAndCookies(function(items, results) {
+            getUserInfo(function (response) {
+                if (response) {
+                    items.profiles[response.uid] = {
+                        "username": response.username,
+                        "cookies": results
+                    };
+                    // save current profile first
+                    chrome.storage.local.set({profiles: items.profiles}, function () {
+                        // remove current cookies
+                        for (var cookie of results) {
+                            chrome.cookies.remove({url: 'https://bbs.bbuhot.com', name: cookie.name});
                         }
+
+                        // set cookies to the wanted profile
+                        let cookies = items.profiles[uid].cookies;
+                        for (var cookie of cookies) {
+                            var data = {url: 'https://bbs.bbuhot.com'};
+                            for (var k in cookie) {
+                                if (k != 'session' && k !=  'hostOnly') {
+                                    data[k] = cookie[k];
+                                }
+                            }
+                            chrome.cookies.set(data);
+                        }
+                        callback(true);
+                    });
+                } else {
+                    for (var cookie of results) {
+                        chrome.cookies.remove({url: 'https://bbs.bbuhot.com', name: cookie.name});
                     }
-                    chrome.cookies.set(data);
+
+                    // set cookies to the wanted profile
+                    let cookies = items.profiles[uid].cookies;
+                    for (var cookie of cookies) {
+                        var data = {url: 'https://bbs.bbuhot.com'};
+                        for (var k in cookie) {
+                            if (k != 'session' && k !=  'hostOnly') {
+                                data[k] = cookie[k];
+                            }
+                        }
+                        chrome.cookies.set(data);
+                    }
+                    callback(true);
                 }
-                callback(true);
             });
         });
     }
@@ -111,30 +153,28 @@
     }
 
     function updateCurrentProfileHTML() {
-        chrome.tabs.query({active: true, currentWindow: true}, function (tabs) {
-            chrome.tabs.sendMessage(tabs[0].id, {type: 'user_info'}, function (response) {
-                chrome.storage.local.get('profiles', function (items) {
-                    let el = document.getElementById('current_profile');
-                    if (response && items.profiles[response.uid]) {
-                        el.innerHTML = response.username;
-                    } else {
-                        el.innerHTML = "Empty Profile";
-                    }
-                });
+        getUserInfo(function (response) {
+            chrome.storage.local.get('profiles', function (items) {
+                let el = document.getElementById('current_profile');
+                if (response && items.profiles[response.uid]) {
+                    el.innerHTML = response.username;
+                } else {
+                    el.innerHTML = "No Documented Profile";
+                }
             });
         });
     }
 
     function updateProfileListHTML() {
         chrome.storage.local.get('profiles', function (items) {
-            if (isEmpty(items.profiles)) {
-                var html_str = '<p id="no_profile">No Profile exist</p>';
-                let profile_list = document.getElementById('profile_list');
-                profile_list.innerHTML = html_str;
+            let profiles = items.profiles;
+            let profile_list = document.getElementById('profile_list');
+
+            if (isEmpty(profiles)) {
+                profile_list.innerHTML = '<p class="empty">No Profile exist</p>';
             } else {
-                let profiles = items.profiles;
                 var html_str = '';
-                for (var uid in profiles) {
+                for (let uid in profiles) {
                     html_str += '<p>' +
                         profiles[uid].username +
                         '&nbsp;<span><a href="#" class="switch_profile" data-profileuid="' +
@@ -143,10 +183,7 @@
                         uid +
                         '">remove</a></span></p>';
                 }
-
-                let profile_list = document.getElementById('profile_list');
                 profile_list.innerHTML = html_str;
-
                 addProfileListeners();
             }
         });

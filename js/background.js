@@ -25,6 +25,7 @@ chrome.runtime.onInstalled.addListener(function (details) {
                     hide_replies: false,
                     min_level: 0
                 },
+                blacklist: {},
                 settings: {
                     // TODO: prepopulating the rigid data might not be a good
                     // idea
