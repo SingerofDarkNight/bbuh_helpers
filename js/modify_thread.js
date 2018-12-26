@@ -15,51 +15,46 @@
         }
     }
 
-    function getAncestorElement(node, num) {
-        var el = node;
-        for (let i = 1; i <= num; i++) {
-            if (el) {
-                el = el.parentElement;
-            } else {
-                return el;
+    function hideByGroup(node, misc, settings) {
+        if (misc.hide_replies) {
+            let gid_el = node.querySelector('div.pls.favatar > p:nth-child(5) > a');
+            if (!gid_el) {
+                return false;
             }
-        }
-        return el;
-    }
-
-    // TODO: find a better to deal with this
-    function hideUserGroups(node, misc, settings) {
-        if (node.nodeName.toLowerCase() == 'a' &&
-            node.hasAttribute('href')) {
-            let href = node.getAttribute('href');
-            if (href.indexOf('home.php?mod=spacecp&ac=usergroup&gid') == 0) {
-                // get post element
-                let post_el = getAncestorElement(node, 7);
-                if (post_el && post_el.id.match(/post\_/)) {
-                    // get thread number
-                    let el_id = 'postnum' + post_el.id.match(/\d+/)[0];
-                    let t = document.getElementById(el_id).innerText;
-                    // forbidden groups
-                    let ag = settings.user_levels.slice(0, misc.min_level);
-                    // get group id
-                    let gid = Number(href.slice(38));
-                    if (t != settings.main_post_label &&
-                        ag.indexOf(gid) >= 0) {
-                        post_el.style.display = 'none';
-                    }
-                }
+            let gid = Number(gid_el.getAttribute('href').slice(38));
+            let postnum = node.querySelector('a[id^=postnum]').innerText;
+            let forbidden_groups = settings.user_levels.slice(0, misc.min_level);
+            if (postnum != settings.main_post_label &&
+                forbidden_groups.indexOf(gid) > 0) {
+                node.style.display = 'none';
             }
         }
     }
 
-    function initObserver(misc, settings) {
+    function hideByBlacklist(node, blacklist, settings) {
+        let user = node.querySelector('div.pls.favatar > div.pi > div > a').innerText;
+        if (blacklist[user] &&
+            (blacklist[user] == 'user' || blacklist[user] == 'both')) {
+            node.style.display = 'none';
+        }
+
+    }
+
+    function hideUserContent(node, misc, blacklist, settings) {
+        if (node.nodeName.toLowerCase() == 'div' &&
+            node.hasAttribute('id') &&
+            node.getAttribute('id').match(/post\_\d+/)) {
+            hideByBlacklist(node, blacklist, settings);
+            hideByGroup(node, misc, settings);
+        }
+    }
+
+    function initObserver(misc, blacklist, settings) {
         let ob = new MutationObserver(function (mutationList, observer) {
             mutationList.forEach(function (mutation) {
                 if (mutation.addedNodes) {
                     mutation.addedNodes.forEach(function (node) {
-                        if (misc.hide_replies) {
-                            hideUserGroups(node, misc, settings);
-                        }
+                        hideUserContent(node, misc, blacklist, settings);
 
                         if (misc.hide_medals) {
                             hideMedals(node);
@@ -77,8 +72,8 @@
     }
 
     function init() {
-        chrome.storage.local.get(['misc', 'settings'], function (items) {
-            let ob = initObserver(items.misc, items.settings);
+        chrome.storage.local.get(['misc', 'settings', 'blacklist'], function (items) {
+            let ob = initObserver(items.misc, items.blacklist, items.settings);
             ob.observe(document, {childList: true, subtree: true});
         });
     }
