@@ -12,6 +12,7 @@ build:
 	cp -R src/html dist/
 	cp -R src/icons dist/
 	cp -R src/js dist/
+	cp -R src/css dist/
 	rm dist/js/encoding_page.source.js
 
 clean_dist:
