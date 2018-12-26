@@ -41,9 +41,11 @@
     }
 
     function init() {
-        chrome.storage.local.get('blacklist', function (items) {
-            let ob = initObserver(items.blacklist);
-            ob.observe(document, {childList: true, subtree: true});
+        chrome.storage.local.get(['blacklist', 'settings'], function (items) {
+            if (items.settings.enable_blacklist) {
+                let ob = initObserver(items.blacklist);
+                ob.observe(document, {childList: true, subtree: true});
+            }
         });
     }
 
