@@ -1,4 +1,12 @@
-dist: build
+dev: clean_dist build
+
+dist: install_deps build
+
+install_deps:
+	cd src && yarn
+
+build:
+	cd src && yarn run build
 	mkdir dist
 	cp src/manifest.json dist/
 	cp -R src/html dist/
@@ -6,14 +14,8 @@ dist: build
 	cp -R src/js dist/
 	rm dist/js/encoding_page.source.js
 
-
-install_deps:
-	cd src && yarn
-
-
-build: install_deps
-	cd src && yarn run build
-
+clean_dist:
+	rm -rf dist/
 
 clean:
 	rm -rf dist/

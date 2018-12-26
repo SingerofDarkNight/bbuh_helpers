@@ -1,6 +1,6 @@
 {
     "name": "BBUH!",
-    "version": "0.0.6",
+    "version": "0.0.7",
     "description": "BBUH! helpers.",
     "icons": {
         "16": "icons/icon16x16.png",
@@ -44,6 +44,7 @@
         "default_popup": "html/profiles.html",
         "default_icon": "icons/icon19x19.png"
     },
+    "options_page": "html/options.html",
     "permissions": [
         "tabs",
         "cookies",
