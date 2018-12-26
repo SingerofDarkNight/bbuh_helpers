@@ -32,12 +32,13 @@
     }
 
     function hideByBlacklist(node, blacklist, settings) {
-        let user = node.querySelector('div.pls.favatar > div.pi > div > a').innerText;
-        if (blacklist[user] &&
-            (blacklist[user] == 'user' || blacklist[user] == 'both')) {
-            node.style.display = 'none';
+        if (settings.enable_blacklist) {
+            let user = node.querySelector('div.pls.favatar > div.pi > div > a').innerText;
+            if (blacklist[user] &&
+                (blacklist[user] == 'user' || blacklist[user] == 'both')) {
+                node.style.display = 'none';
+            }
         }
-
     }
 
     function hideUserContent(node, misc, blacklist, settings) {
