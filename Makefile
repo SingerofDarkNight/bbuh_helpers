@@ -1,5 +1,7 @@
 dev: clean_dist build
 
+dist: clean install_deps build
+
 install_deps:
 	yarn
 
