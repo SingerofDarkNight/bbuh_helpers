@@ -1,16 +1,6 @@
-import gotham from 'gotham-encoder';
+import Vue from 'vue';
+import Encoding from './Encoding.vue';
 
-const encoded = document.getElementById('encoded');
-const decoded = document.getElementById('decoded');
-const encodeBtn = document.getElementById('encode');
-const decodeBtn = document.getElementById('decode');
-
-encodeBtn.addEventListener('click', e => {
-    const newEncodedVal = gotham.encode(decoded.value);
-    encoded.value = newEncodedVal;
-});
-
-decodeBtn.addEventListener('click', e => {
-    const newDecodedVal = gotham.decode(encoded.value);
-    decoded.value = newDecodedVal;
-});
+new Vue({
+    render: h => h(Encoding),
+}).$mount('#encoding');

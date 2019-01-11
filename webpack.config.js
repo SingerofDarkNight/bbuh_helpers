@@ -13,7 +13,7 @@ module.exports = {
         misc_page: './src/js/misc_page.js',
         modify_forum: './src/js/modify_forum.js',
         modify_thread: './src/js/modify_thread.js',
-        option_page: './src/js/option_page.js',
+        options_page: './src/js/options_page.js',
         page_common: './src/js/page_common.js',
         profiles_page: './src/js/profiles_page.js',
         user_info: './src/js/user_info.js'
