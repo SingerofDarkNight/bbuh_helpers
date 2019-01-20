@@ -1,22 +1,22 @@
 const path = require('path');
 const VueLoaderPlugin = require('vue-loader/lib/plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 module.exports = {
+    // TODO(luciusgone): We have to use production to avoid content security problem for now
     mode: 'production',
     entry: {
-        auto_sign: './src/js/auto_sign.js',
-        background: './src/js/background.js',
-        blacklist_page: './src/js/blacklist_page.js',
-        encoding_page: './src/js/encoding_page.js',
-        farm_kit: './src/js/farm_kit.js',
-        misc_page: './src/js/misc_page.js',
-        modify_forum: './src/js/modify_forum.js',
-        modify_thread: './src/js/modify_thread.js',
-        options_page: './src/js/options_page.js',
-        page_common: './src/js/page_common.js',
-        profiles_page: './src/js/profiles_page.js',
-        user_info: './src/js/user_info.js'
+        // background script
+        background: './src/content_script/background.js',
+        // popup script
+        popup: './src/popup.js',
+        // content scripts
+        auto_sign: './src/content_script/auto_sign.js',
+        farm_kit: './src/content_script/farm_kit.js',
+        modify_forum: './src/content_script/modify_forum.js',
+        modify_thread: './src/content_script/modify_thread.js',
+        user_info: './src/content_script/user_info.js'
     },
     output: {
         filename: 'js/[name].js',
@@ -31,9 +31,11 @@ module.exports = {
             loader: 'babel-loader',
             exclude: file => ( /node_modules/.test(file) && !/\.vue\.js/.test(file))
         }, {
-            test: /\.scss$/,
+            test: /\.(scss|css)$/,
             use: [
-                'vue-style-loader',
+                process.env.NODE_ENV !== 'production'
+                        ? 'vue-style-loader'
+                        : MiniCssExtractPlugin.loader,
                 'css-loader',
                 'sass-loader'
             ]
@@ -42,12 +44,15 @@ module.exports = {
     plugins: [
         new VueLoaderPlugin(),
         new CopyWebpackPlugin([
-            { from: './src/icons/*.png', to: 'icons/[name].[ext]', toType: 'template' },
-            { from: './src/css/*.css', to: 'css/[name].[ext]', toType: 'template' },
-            { from: './src/html/*.html', to: 'html/[name].[ext]', toType: 'template' },
+            { from: './src/assets/icons/*.png', to: 'icons/[name].[ext]', toType: 'template' },
+            { from: './src/*.html', to: 'html/[name].[ext]', toType: 'template' },
             { from: './src/manifest.json', to: 'manifest.json', toType: 'file' }
-        ])
+        ]),
+        new MiniCssExtractPlugin({
+            filename: 'css/popup.css'
+        })
     ],
+    // TODO(luciusgone): remove this when building releases
     optimization: {
         minimize: false
     }

@@ -41,10 +41,9 @@
         "run_at": "document_end"
     }],
     "page_action": {
-        "default_popup": "html/profiles.html",
+        "default_popup": "html/popup.html",
         "default_icon": "icons/icon19x19.png"
     },
-    "options_page": "html/options.html",
     "permissions": [
         "tabs",
         "cookies",

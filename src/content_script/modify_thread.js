@@ -24,7 +24,7 @@ function hideByGroup(node, misc, settings) {
         }
         let gid = Number(gid_el.getAttribute('href').slice(38));
         let postnum = node.querySelector('a[id^=postnum]').innerText;
-        let forbidden_groups = settings.user_levels.slice(0, misc.min_level);
+        let forbidden_groups = misc.user_levels.slice(0, misc.min_level);
         if (postnum != settings.main_post_label &&
             forbidden_groups.indexOf(gid) > 0) {
             node.style.display = 'none';

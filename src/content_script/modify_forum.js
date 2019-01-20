@@ -9,6 +9,7 @@ function blockContentByBlacklist(node, blacklist) {
         node.hasAttribute('id') &&
         node.getAttribute('id').match(/(stickthread|normalthread)(\_\d+)/)) {
 
+        // TODO(luciusgone): BUG. the node might be null
         let post_title = node.getElementsByClassName('s xst')[0].innerText;
         let author = node.querySelectorAll('.by > cite > a')[0].innerText;
 
