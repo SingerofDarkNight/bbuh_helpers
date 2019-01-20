@@ -1,3 +1,5 @@
+import 'chrome-extension-async';
+
 function isSigned() {
     let el = document.querySelector('#ct > div.mn > h1.mt');
     if (el && el.innerText == "您今天已经签到过了或者签到时间还未开始") {
@@ -54,12 +56,11 @@ function quickSign() {
     }
 }
 
-function init() {
-    chrome.storage.local.get('settings', function (items) {
-        if (items.settings.enable_auto_sign) {
-            quickSign();
-        }
-    });
+async function init() {
+    const items = await chrome.storage.local.get('settings');
+    if (items.settings.enable_auto_sign) {
+        quickSign();
+    }
 }
 
 init();
