@@ -1,7 +1,7 @@
 <template>
 <div>
     <textarea v-model.trim="decoded" placeholder="What to encode today? Mr Wayne."></textarea>
-    <div>
+    <div class="controlls">
         <button type="button" v-on:click="encodeMessage">&darr;</button>
         <button type="button" v-on:click="decodeMessage">&uarr;</button>
     </div>
@@ -32,4 +32,7 @@ export default {
 </script>
 
 <style lang="scss">
+.controlls {
+    text-align: center;
+}
 </style>

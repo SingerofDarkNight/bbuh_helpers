@@ -44,11 +44,36 @@ export default {
 
 <style lang="scss">
 ul.tabs {
+    display: flex;
+    flex-flow: row;
     list-style-type: none;
 }
 
 ul.tabs > li {
-    display: inline;
-    padding: 1px 3px;
+    width: 25%;
+    padding: 3px 5px;
+    text-align: center;
+    cursor: pointer;
+}
+
+ul.tabs > li:hover {
+    text-decoration: underline;
+    color: darkcyan;
+}
+
+ul.tabs > li.active {
+    color: darkcyan;
+    border-left: 1px black solid;
+    border-right: 1px black solid;
+    border-top: 1px black solid;
+    border-top-right-radius: 5px;
+    border-top-left-radius: 5px;
+}
+
+.panel {
+    padding: 3px 5px;
+    border: 1px black solid;
+    border-bottom-right-radius: 5px;
+    border-bottom-left-radius: 5px;
 }
 </style>

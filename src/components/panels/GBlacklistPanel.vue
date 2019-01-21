@@ -7,11 +7,13 @@
     </div>
     <div>
         <h2>Blacklist</h2>
-        <p v-for="(type, word) in blacklist">
-            {{ word }}
-            <span>{{type}}</span>
-            <span v-on:click="remove(word)">Remove</span>
-        </p>
+        <div id="listcontainer">
+            <p class="listitem" v-for="(type, word) in blacklist">
+                <span class="keyword">{{ word }}</span>
+                <span class="type">{{type}}</span>
+                <span class="remove" v-on:click="remove(word)">Remove</span>
+            </p>
+        </div>
     </div>
 </div>
 <div v-else>
@@ -20,7 +22,7 @@
 </template>
 
 <script>
-import storage from '../../core/storage.js';
+import storage from '../../core/base/storage.js';
 
 export default {
     name: 'GBlacklistPanel',
@@ -66,4 +68,34 @@ export default {
 </script>
 
 <style lang="scss">
+.listcontainer {
+    padding: 3px 5px;
+    display: flex;
+    flex-flow: column;
+}
+
+.listitem {
+    display: flex;
+    flex-flow: row;
+    width: 100%
+}
+
+.keyword {
+    width: 60%
+}
+
+.type {
+    width: 20%;
+    color: blue;
+}
+
+.remove {
+    width: 20%;
+    cursor: pointer;
+}
+
+.remove:hover {
+    text-decoration: underline;
+    color: darkcyan;
+}
 </style>

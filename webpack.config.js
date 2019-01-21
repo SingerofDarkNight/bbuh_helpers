@@ -55,5 +55,9 @@ module.exports = {
     // TODO(luciusgone): remove this when building releases
     optimization: {
         minimize: false
+    },
+    // TODO(luciusgone): remove this when building releases
+    performance: {
+        hints: false
     }
 };

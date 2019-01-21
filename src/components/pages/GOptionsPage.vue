@@ -1,6 +1,6 @@
 <template>
 <main role="main">
-    <GOptionsPanel class="panel"></GOptionsPanel>
+    <GOptionsPanel class="optionpanel"></GOptionsPanel>
 </main>
 </template>
 
@@ -14,3 +14,14 @@ export default {
     }
 };
 </script>
+
+<style lang="scss">
+.optionpanel {
+    padding: 3px 5px;
+    border: 1px black solid;
+    border-top-right-radius: 5px;
+    border-top-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    border-bottom-left-radius: 5px;
+}
+</style>

@@ -7,11 +7,11 @@
     </div>
     <div>
         <h2>Profile List</h2>
-        <div>
-            <p v-for="(username, uid) in profiles">
-                {{ username }}
-                <span v-on:click="switchTo(uid)">Switch</span>
-                <span v-on:click="remove(uid)">Remove</span>
+        <div id="listcontainer">
+            <p class="listitem" v-for="(username, uid) in profiles">
+                <span class="username">{{ username }}</span>
+                <span class="switch" v-on:click="switchTo(uid)">Switch</span>
+                <span class="remove"v-on:click="remove(uid)">Remove</span>
             </p>
         </div>
     </div>
@@ -22,9 +22,9 @@
 </template>
 
 <script>
-import cookies from '../../core/cookies.js';
-import messages from '../../core/messages.js';
-import storage from '../../core/storage.js';
+import cookies from '../../core/base/cookies.js';
+import messages from '../../core/base/messages.js';
+import storage from '../../core/base/storage.js';
 
 export default {
     name: 'GProfilesPanel',
@@ -108,4 +108,21 @@ export default {
 </script>
 
 <style lang="scss">
+//listcontainer and listitem style are set in GBlacklistPanel
+
+.username {
+    width: 60%;
+}
+
+.switch {
+    width: 20%;
+    cursor: pointer;
+}
+
+.switch:hover {
+    text-decoration: underline;
+    color: darkcyan;
+}
+
+// remove button style are set in GBlacklistPanel
 </style>

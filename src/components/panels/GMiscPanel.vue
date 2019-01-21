@@ -37,7 +37,7 @@
 </template>
 
 <script>
-import storage from '../../core/storage.js';
+import storage from '../../core/base/storage.js';
 
 export default {
     name: 'GMiscPanel',
@@ -76,6 +76,3 @@ export default {
     }
 };
 </script>
-
-<style lang="scss">
-</style>
