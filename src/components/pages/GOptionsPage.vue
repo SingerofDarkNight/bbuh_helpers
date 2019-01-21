@@ -18,7 +18,7 @@ export default {
 <style lang="scss">
 .optionpanel {
     padding: 3px 5px;
-    border: 1px black solid;
+    border: 1px solid #ccc;
     border-top-right-radius: 5px;
     border-top-left-radius: 5px;
     border-bottom-right-radius: 5px;

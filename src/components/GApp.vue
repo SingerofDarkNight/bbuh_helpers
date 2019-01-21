@@ -88,7 +88,8 @@ p {
 }
 
 button {
-    background: dimgray;
+    font-family: monospace;
+    background: darkcyan;
     color: white;
     padding: 3px 5px;
     border: 1px;
@@ -98,7 +99,8 @@ button {
 input[type=text] {
     width: 100%;
     font-size: 14px;
-    margin: 3px 0px;
+    padding: 1px 5px;
+    margin: 3px 0;
 }
 
 textarea {
@@ -106,6 +108,7 @@ textarea {
     height: 120px;
     border: 1px solid black;
     border-radius: 5px;
+    padding: 5px 5px;
     resize: none;
 }
 

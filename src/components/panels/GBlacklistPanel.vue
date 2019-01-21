@@ -2,8 +2,10 @@
 <div v-if="loaded && !disabled">
     <div>
         <input v-model.trim="keyword" type="text" placeholder="user/keyword"></input>
-        <button v-on:click="add('user')">Block This User</button>
-        <button v-on:click="add('keyword')">Block This Word</button>
+        <div class="controlls">
+            <button v-on:click="add('user')">Block This User</button>
+            <button v-on:click="add('keyword')">Block This Word</button>
+        </div>
     </div>
     <div>
         <h2>Blacklist</h2>
@@ -17,7 +19,7 @@
     </div>
 </div>
 <div v-else>
-    <p>Blacklist Disabled</p>
+    <p class="warning">Blacklist Disabled</p>
 </div>
 </template>
 
@@ -68,6 +70,8 @@ export default {
 </script>
 
 <style lang="scss">
+// controlls style are set in GEncodingPanel
+
 .listcontainer {
     padding: 3px 5px;
     display: flex;
@@ -86,7 +90,7 @@ export default {
 
 .type {
     width: 20%;
-    color: blue;
+    color: #ccc;
 }
 
 .remove {
@@ -97,5 +101,9 @@ export default {
 .remove:hover {
     text-decoration: underline;
     color: darkcyan;
+}
+
+.warning {
+    color: red;
 }
 </style>

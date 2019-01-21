@@ -1,7 +1,7 @@
 <template>
 <div v-if="loaded">
-    <p>Current Profile: <span>{{ current ? current : "No tracked Profile" }}</span></p>
-    <div>
+    <p>Current Profile: <span class="currentprofile">{{ current ? current : "No tracked Profile" }}</span></p>
+    <div class="controlls">
         <button v-on:click="create">Add Profile</button>
         <button v-on:click="switchToEmpty">Switch to Empty Profile</button>
     </div>
@@ -108,6 +108,14 @@ export default {
 </script>
 
 <style lang="scss">
+.currentprofile {
+    font-style:bold;
+    font-family: monospace;
+    color: darkcyan;
+}
+
+// controlls style are set in GEncodingPanel
+
 //listcontainer and listitem style are set in GBlacklistPanel
 
 .username {

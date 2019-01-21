@@ -51,6 +51,7 @@ ul.tabs {
 
 ul.tabs > li {
     width: 25%;
+    border-bottom: 1px solid #ccc;
     padding: 3px 5px;
     text-align: center;
     cursor: pointer;
@@ -62,17 +63,19 @@ ul.tabs > li:hover {
 }
 
 ul.tabs > li.active {
-    color: darkcyan;
-    border-left: 1px black solid;
-    border-right: 1px black solid;
-    border-top: 1px black solid;
+    border-left: 1px solid #ccc;
+    border-right: 1px solid #ccc;
+    border-bottom: none;
+    border-top: 4px solid darkcyan;
     border-top-right-radius: 5px;
     border-top-left-radius: 5px;
 }
 
 .panel {
     padding: 3px 5px;
-    border: 1px black solid;
+    border-left: 1px solid #ccc;
+    border-right: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
     border-bottom-right-radius: 5px;
     border-bottom-left-radius: 5px;
 }
