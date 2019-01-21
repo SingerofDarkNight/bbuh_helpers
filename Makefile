@@ -1,24 +1,22 @@
-dev: clean_dist build
+DEV_ENV=
 
-dist: install_deps build
+dev: DEV_ENV=development
+dev: build
+
+dist: DEV_ENV=production
+dist: clean install_deps build
 
 install_deps:
-	cd src && yarn
+	yarn install
 
 build:
-	cd src && yarn run build
-	mkdir dist
-	cp src/manifest.json dist/
-	cp -R src/html dist/
-	cp -R src/icons dist/
-	cp -R src/js dist/
-	cp -R src/css dist/
-	rm dist/js/encoding_page.source.js
+	NODE_ENV=$(DEV_ENV) yarn run build
 
 clean_dist:
 	rm -rf dist/
 
 clean:
 	rm -rf dist/
-	rm -rf src/node_modules
-	rm src/js/encoding_page.js
+	rm -rf node_modules/
+
+.PHONY: clean_dist clean build
