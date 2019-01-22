@@ -45,8 +45,10 @@ module.exports = {
         new VueLoaderPlugin(),
         new CopyWebpackPlugin([
             { from: './src/assets/icons/*.png', to: 'icons/[name].[ext]', toType: 'template' },
+            { from: './src/assets/licenses/*', to: 'licenses/[name]', toType: 'template' },
             { from: './src/*.html', to: 'html/[name].[ext]', toType: 'template' },
-            { from: './src/manifest.json', to: 'manifest.json', toType: 'file' }
+            { from: './src/manifest.json', to: 'manifest.json', toType: 'file' },
+            { from: './LICENSE', to: 'LICENSE', toType: 'file' }
         ]),
         new MiniCssExtractPlugin({
             filename: 'css/popup.css'
