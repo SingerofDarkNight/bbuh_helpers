@@ -99,9 +99,3 @@ export default {
     }
 };
 </script>
-
-<style lang="scss">
-section {
-    padding: 3px 5px;
-}
-</style>
