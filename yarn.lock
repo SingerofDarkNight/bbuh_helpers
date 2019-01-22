@@ -2226,6 +2226,11 @@ hosted-git-info@^2.1.4:
   resolved "https://registry.yarnpkg.com/hosted-git-info/-/hosted-git-info-2.7.1.tgz#97f236977bd6e125408930ff6de3eec6281ec047"
   integrity sha512-7T/BxH19zbcCTa8XkMlbK5lTo1WtgkFi3GvdWEyNuc4Vex7/9Dqbnpsf4JMydcfj9HCg4zUWFTL3Za6lapg5/w==
 
+html2bbcode@^1.2.6:
+  version "1.2.6"
+  resolved "https://registry.yarnpkg.com/html2bbcode/-/html2bbcode-1.2.6.tgz#0292a13efb4d8447560fddb929398bff01d603d9"
+  integrity sha512-ZojuqqXJdsh+BLe6UICGYxXw0ryqDGxev541+kDMm2wkF6544niqZ712OWX+aKmnjeJhYO2PiE32qmZdsSrjpw==
+
 http-signature@~1.2.0:
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/http-signature/-/http-signature-1.2.0.tgz#9aecd925114772f3d95b65a60abb8f7c18fbace1"
