@@ -47,79 +47,85 @@ export default {
     padding: 0px;
 }
 
-// app container
 #app {
+    // app container
     width: 320px;
     max-height: 640px;
     font: 14px sans-serif;
-}
 
-// header
-header {
-    display: flex;
-    padding: 0 5px;
-}
+    // common styles
+    h1 {
+        font: 24px monospace;
+    }
 
-// main part
-.main {
-    padding: 0 5px;
-    margin-top: 5px;
-    display: flex;
-    flex-flow: column;
-}
+    h2 {
+        font: 20px monospace;
+        padding: 0 1px;
+    }
 
-// common styles
-h1 {
-    font: 24px monospace;
-}
+    h3 {
+        font: 16px monospace;
+        padding: 0 3px;
+    }
 
-h2 {
-    font: 20px monospace;
-    padding: 0 1px;
-}
+    p {
+        padding: 3px 5px;
+    }
 
-h3 {
-    font: 16px monospace;
-    padding: 0 3px;
-}
+    section {
+        padding: 3px 5px;
+    }
 
-p {
-    padding: 1px 5px;
-}
+    button {
+        font-family: monospace;
+        background: darkcyan;
+        color: white;
+        padding: 5px 10px;
+        border: 1px;
+        border-radius: 5px;
+        margin: 3px 5px;
+    }
 
-button {
-    font-family: monospace;
-    background: darkcyan;
-    color: white;
-    padding: 3px 5px;
-    border: 1px;
-    border-radius: 5px;
-}
+    input[type=text] {
+        width: 100%;
+        font-size: 14px;
+        border-radius: 5px;
+        padding: 1px 5px;
+        margin: 3px 0;
+    }
 
-input[type=text] {
-    width: 100%;
-    font-size: 14px;
-    padding: 1px 5px;
-    margin: 3px 0;
-}
+    textarea {
+        width: 100%;
+        height: 120px;
+        border: 1px solid black;
+        border-radius: 5px;
+        padding: 5px 5px;
+        margin: 5px 0;
+        resize: none;
+    }
 
-textarea {
-    width: 100%;
-    height: 120px;
-    border: 1px solid black;
-    border-radius: 5px;
-    padding: 5px 5px;
-    resize: none;
-}
+    // header
+    > header {
+        display: flex;
+        padding: 0 5px;
 
-// header content
-header > h1 {
-    display: inline-block;
-    width: 90%;
-}
+        > h1 {
+            display: inline-block;
+            width: 90%;
+        }
 
-header > button {
-    display: 10%;
-    align-self: center;
+        > button {
+            display: 10%;
+            align-self: center;
+        }
+    }
+
+    // main part
+    > .main {
+        padding: 0 5px;
+        margin-top: 5px;
+        display: flex;
+        flex-flow: column;
+    }
 }
 </style>
