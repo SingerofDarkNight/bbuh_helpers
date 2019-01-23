@@ -1,6 +1,6 @@
 export default class AutoSigner {
     constructor(todaysay) {
-        this.todaysay = todaysay || 'QuickSign';
+        this.todaysay = todaysay
     }
 
     isSigned() {
