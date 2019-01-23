@@ -12,11 +12,9 @@ module.exports = {
         // popup script
         popup: './src/popup.js',
         // content scripts
-        auto_sign: './src/content_script/auto_sign.js',
-        farm_kit: './src/content_script/farm_kit.js',
-        modify_forum: './src/content_script/modify_forum.js',
-        modify_thread: './src/content_script/modify_thread.js',
-        user_info: './src/content_script/user_info.js'
+        document_start: './src/content_script/document_start.js',
+        document_idle: './src/content_script/document_idle.js',
+        document_end: './src/content_script/document_end.js',
     },
     output: {
         filename: 'js/[name].js',

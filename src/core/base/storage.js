@@ -41,6 +41,10 @@ class StorageWrapper {
         await this.source.set(items);
         this.cached[key] = val;
     }
+
+    async seed(val) {
+        await this.source.set(val);
+    }
 }
 
 export default new StorageWrapper(chrome.storage.local);
