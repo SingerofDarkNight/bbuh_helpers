@@ -14,5 +14,9 @@
         "enable_auto_sign": true,
         "enable_farm_kit": true,
         "enable_blacklist": true
+    },
+    "meta": {
+        "known_keys": ["meta", "profiles", "misc", "blacklist", "settings"],
+        "last_opened_tab": "Profiles"
     }
 }

@@ -1,11 +1,11 @@
 <template>
-<main role="main">
+<main role="main" v-if="loaded">
     <ul class="tabs">
         <li
             v-for="tab in tabs"
             v-bind:key="tab"
             v-bind:class="[{active: currentTab == tab}]"
-            v-on:click="currentTab = tab"
+            v-on:click="changeTab(tab)"
         >{{tab}}</li>
     </ul>
     <keep-alive>
@@ -15,6 +15,8 @@
 </template>
 
 <script>
+import storage from '../../core/base/storage.js';
+
 import GBlacklistPanel from '../panels/GBlacklistPanel.vue';
 import GEncodingPanel from '../panels/GEncodingPanel.vue';
 import GMiscPanel from '../panels/GMiscPanel.vue';
@@ -24,13 +26,27 @@ export default {
     name: 'GTabsPage',
     data() {
         return {
-            currentTab: 'Profiles',
+            loaded: false,
+            currentTab: '',
             tabs: ['Profiles', 'Blacklist', 'Encoding', 'Misc']
         }
+    },
+    async created() {
+        const meta = await storage.get('meta');
+        this.currentTab = meta.last_opened_tab;
+        this.loaded = true;
     },
     computed: {
         currentTabComponent() {
             return `G${this.currentTab}Panel`;
+        }
+    },
+    methods: {
+        async changeTab(tab) {
+            this.currentTab = tab;
+            const meta = await storage.get('meta');
+            meta.last_opened_tab = tab;
+            await storage.save('meta', meta);
         }
     },
     components: {
