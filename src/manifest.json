@@ -1,6 +1,6 @@
 {
     "name": "BBUH!",
-    "version": "0.1.3",
+    "version": "0.1.4",
     "description": "BBUH! helpers.",
     "icons": {
         "16": "icons/icon16x16.png",
@@ -13,32 +13,15 @@
     },
     "content_scripts": [{
         "matches": ["https://bbs.bbuhot.com/*"],
-        "js": ["js/user_info.js"]
-    }, {
-        "matches": [
-            "https://bbs.bbuhot.com/thread-*-*-*.html",
-            "https://bbs.bbuhot.com/forum.php?mod=viewthread*"
-        ],
-        "js": ["js/modify_thread.js"],
+        "js": ["js/document_start.js"],
         "run_at": "document_start"
     }, {
-        "matches": [
-            "https://bbs.bbuhot.com/forum-*-*.html",
-            "https://bbs.bbuhot.com/forum.php?mod=forumdisplay*"
-        ],
-        "js": ["js/modify_forum.js"],
-        "run_at": "document_start"
-    }, {
-        "matches": [
-            "https://bbs.bbuhot.com/thread-*.html",
-            "https://bbs.bbuhot.com/*mod=viewthread*"
-        ],
-        "js": ["js/farm_kit.js"],
+        "matches": ["https://bbs.bbuhot.com/*"],
+        "js": ["js/document_end.js"],
         "run_at": "document_end"
     }, {
-        "matches": ["https://bbs.bbuhot.com/dsu_paulsign-sign.html"],
-        "js": ["js/auto_sign.js"],
-        "run_at": "document_end"
+        "matches": ["https://bbs.bbuhot.com/*"],
+        "js": ["js/document_idle.js"]
     }],
     "page_action": {
         "default_popup": "html/popup.html",

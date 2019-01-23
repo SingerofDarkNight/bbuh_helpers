@@ -1,0 +1,18 @@
+{
+    "profiles": {},
+    "misc": {
+        "hide_medals": false,
+        "hide_signs": false,
+        "hide_replies": false,
+        "min_level": 0,
+        "user_levels": [9, 32, 10, 11, 12, 13, 14, 15, 28, 29, 30, 31]
+    },
+    "blacklist": {},
+    "settings": {
+        "main_post_label": "基地",
+        "todaysay": "自动签到就是爽",
+        "enable_auto_sign": true,
+        "enable_farm_kit": true,
+        "enable_blacklist": true
+    }
+}

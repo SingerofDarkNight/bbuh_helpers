@@ -1,17 +1,44 @@
 export default class AutoSigner {
     constructor(todaysay) {
-        this.todaysay = todaysay || 'QuickSign';
+        this.todaysay = todaysay
+    }
 
-        this.id_sel = '#ct > div.mn > h1.mt';
-        this.id_regexp = /您今天已经签到过了或者签到时间还未开始/;
+    isSigned() {
+        const el = document.querySelector('#ct > div.mn > h1.mt');
+        if (el && el.innerText.match(/您今天已经签到过了或者签到时间还未开始/)) {
+            return true;
+        }
 
-        this.qdsmiles_sel = 'ul.qdsmile > li';
-        this.qdmodes_sel = 'input[name^=qdmode]';
+        return false;
+    }
 
-        this.todaysay_sel = '#todaysay';
-        this.fastreply_sel = 'select[name=fastreply]';
+    randomInt(max) {
+        return Math.floor(Math.random() * Math.floor(max));
+    }
 
-        this.submit_sel = '#qiandao';
+    selectRandomEmotion() {
+        const emotions = document.querySelectorAll('ul.qdsmile > li');
+        const selected_emotion = emotions[this.randomInt(emotions.length)];
+        selected_emotion.click();
+    }
+
+    inputMood() {
+        const modes = document.querySelectorAll('input[name^=qdmode]');
+        const selected_mode = this.randomInt(modes.length);
+        modes[selected_mode].click();
+
+        switch (selected_mode) {
+            case 0:
+                let todaysay = document.querySelector('#todaysay');
+                todaysay.value = this.todaysay;
+                break;
+            case 1:
+                let fastreply = document.querySelector('select[name=fastreply]');
+                fastreply.selectedIndex = this.randomInt(fastreply.length);
+                break;
+            default:
+                throw 'Invalid mode';
+        }
     }
 
     run() {
@@ -20,48 +47,10 @@ export default class AutoSigner {
         try {
             this.selectRandomEmotion();
             this.inputMood();
-            const form = document.querySelector(this.submit_sel);
+            const form = document.querySelector('#qiandao');
             form.submit();
         } catch (e) {
             console.log(e);
         }
-    }
-
-    isSigned() {
-        const el = document.querySelector(this.id_sel);
-        if (el && el.innerText.match(this.id_regexp)) {
-            return true;
-        }
-
-        return false;
-    }
-
-    selectRandomEmotion() {
-        const emotions = document.querySelectorAll(this.qdsmiles_sel);
-        const selected_emotion = emotions[this.randomInt(emotions.length)];
-        selected_emotion.click();
-    }
-
-    inputMood() {
-        const modes = document.querySelectorAll(this.qdmodes_sel);
-        const selected_mode = this.randomInt(modes.length);
-        modes[selected_mode].click();
-
-        switch (selected_mode) {
-            case 0:
-                let todaysay = document.querySelector(this.todaysay_sel);
-                todaysay.value = this.todaysay;
-                break;
-            case 1:
-                let fastreply = document.querySelector(this.fastreply_sel);
-                fastreply.selectedIndex = this.randomInt(fastreply.length);
-                break;
-            default:
-                throw 'Invalid mode';
-        }
-    }
-
-    randomInt(max) {
-        return Math.floor(Math.random() * Math.floor(max));
     }
 }

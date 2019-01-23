@@ -13,7 +13,13 @@
         <h3>Main Post Label</h3>
         <p>The main post label is used to block user replies by levels</p>
         <input type="text" v-model.trim="main_post_label">
-        <button type="button" v-on:click="saveMainPostLabel">Save</button>
+        <button type="button" v-on:click="saveText('main_post_label')">Save</button>
+    </section>
+    <section>
+        <h3>Emotions</h3>
+        <p>The emotion string is used by auto sign.</p>
+        <input type="text" v-model.trim="todaysay">
+        <button type="button" v-on:click="saveText('todaysay')">Save</button>
     </section>
     <section>
         <h3>Useful Switches</h3>
@@ -55,6 +61,7 @@ export default {
             loaded: false,
             userlevels: '',
             main_post_label: '',
+            todaysay: '',
             enable_auto_sign: true,
             enable_farm_kit: true,
             enable_blacklist: true
@@ -86,9 +93,9 @@ export default {
             misc.user_levels = a;
             await storage.save('misc', misc);
         },
-        async saveMainPostLabel() {
+        async saveText(k) {
             let settings = await storage.get('settings');
-            settings.main_post_label = this.main_post_label;
+            settings[k] = this[k];
             await storage.save('settings', settings);
         },
         async toggle(sw) {
