@@ -76,8 +76,8 @@ export default {
         padding: 3px 5px;
     }
 
-    button {
-        font-family: monospace;
+    .btn, button {
+        font: 11px monospace;
         background: darkcyan;
         color: white;
         padding: 5px 10px;
@@ -92,6 +92,10 @@ export default {
         border-radius: 5px;
         padding: 1px 5px;
         margin: 3px 0;
+    }
+
+    input[type=file] {
+        display: none;
     }
 
     textarea {

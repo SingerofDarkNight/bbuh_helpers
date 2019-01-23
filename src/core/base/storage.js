@@ -45,6 +45,13 @@ class StorageWrapper {
     async seed(val) {
         await this.source.set(val);
     }
+
+    async getAll() {
+        const meta = await this.get('meta');
+        const items = await this.source.get(meta.known_keys);
+
+        return items;
+    }
 }
 
 export default new StorageWrapper(chrome.storage.local);

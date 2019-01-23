@@ -45,6 +45,14 @@
             <label for="enable_blacklist">Enable Blacklist</label>
         </p>
     </section>
+    <section>
+        <h3>Import/Export</h3>
+        <div class="controlls">
+            <label class="btn">Import<input type="file" accept=".json" v-on:change="importData">
+            </label>
+            <button type="button" v-on:click="exportData">Export</button>
+        </div>
+    </section>
 </div>
 <div v-else>
     <p>loading</p>;
@@ -102,6 +110,39 @@ export default {
             let settings = await storage.get('settings');
             settings[sw] = !settings[sw];
             await storage.save('settings', settings);
+        },
+        async exportData() {
+            const items = await storage.getAll();
+            const data = JSON.stringify(items, null, 4);
+            const blob = new Blob([data], {type: 'text/json'});
+
+            let a = document.createElement('a');
+
+            a.download = 'GothamHelperExport.json';
+            a.href = URL.createObjectURL(blob);
+            a.dataset.downloadurl = ['text/json', a.download, a.href].join(':');
+            a.click();
+        },
+        async importData(event) {
+            const file = event.target.files[0];
+            if (file) {
+                let reader = new FileReader();
+                reader.onload = function(ev) {
+                    try {
+                        const parsed = JSON.parse(ev.target.result);
+                        storage.seed(parsed);
+                    } catch (e) {
+                        console.log(e);
+                    }
+                }
+
+                reader.onerror = function(ev) {
+                    reaer.abort();
+                    alert("Wrong file");
+                }
+
+                reader.readAsText(file);
+            }
         }
     }
 };
