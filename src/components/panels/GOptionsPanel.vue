@@ -44,6 +44,13 @@
                    v-on:change="toggle('enable_blacklist')">
             <label for="enable_blacklist">Enable Blacklist</label>
         </p>
+        <p>
+            <input type="checkbox"
+                   name="enable_extemojis"
+                   v-model="enable_extemojis"
+                   v-on:change="toggle('enable_extemojis')">
+            <label for="enable_extemojis">Enable Extra Emojis</label>
+        </p>
     </section>
     <section>
         <h3>Import/Export</h3>
@@ -72,7 +79,8 @@ export default {
             todaysay: '',
             enable_auto_sign: true,
             enable_farm_kit: true,
-            enable_blacklist: true
+            enable_blacklist: true,
+            enable_extemojis: true
         };
     },
     async created() {
