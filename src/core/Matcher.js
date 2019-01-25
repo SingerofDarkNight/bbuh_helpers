@@ -30,4 +30,13 @@ export default class Matcher {
             (this.getSearchParam('mod') &&
              this.getSearchParam('mod').match(/viewthread/));
     }
+
+    get isEditorPage() {
+        return this.getSearchParam('mod') &&
+            this.getSearchParam('mod').match(/post/);
+    }
+
+    get containsEditorPage() {
+        return this.isThreadPage || this.isForumPage || this.isEditorPage;
+    }
 }

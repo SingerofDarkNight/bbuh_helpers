@@ -1,4 +1,15 @@
 {
+    "meta": {
+        "known_keys": [
+            "meta",
+            "profiles",
+            "misc",
+            "blacklist",
+            "extemojis",
+            "settings"
+        ],
+        "last_opened_tab": "Profiles"
+    },
     "profiles": {},
     "misc": {
         "hide_medals": false,
@@ -13,10 +24,76 @@
         "todaysay": "自动签到就是爽",
         "enable_auto_sign": true,
         "enable_farm_kit": true,
-        "enable_blacklist": true
+        "enable_blacklist": true,
+        "enable_extemojis": true
     },
-    "meta": {
-        "known_keys": ["meta", "profiles", "misc", "blacklist", "settings"],
-        "last_opened_tab": "Profiles"
+    "extemojis": {
+        "熊猫头": [
+            {
+                "src": "data/attachment/forum/201901/03/181341zjjbj6kvzjv6jzb8.jpg",
+                "width": 65,
+                "height": 100
+            },
+            {
+                "src": "data/attachment/forum/201901/03/181343wdccwdnhbfjvhc28.jpg",
+                "width": 150,
+                "height": 100
+            },
+            {
+                "src": "data/attachment/forum/201901/03/181344gchizt06w961919l.jpg",
+                "width": 114,
+                "height": 100
+            },
+            {
+                "src": "data/attachment/forum/201901/03/181345ud5zyi1aed1dkxdr.jpg",
+                "width": 151,
+                "height": 100
+            },
+            {
+                "src": "data/attachment/forum/201901/03/181347jhr91mmivi0v7ra7.jpg",
+                "width": 118,
+                "height": 100
+            },
+            {
+                "src": "data/attachment/forum/201901/03/181347d5u7jb4gjibbipzb.jpg",
+                "width": 147,
+                "height": 100
+            },
+            {
+                "src": "data/attachment/forum/201901/03/181348rz6h00044tvmht2z.jpg",
+                "width": 166,
+                "height": 100
+            },
+            {
+                "src": "data/attachment/forum/201901/03/181348kuoo5g00omn15s7g.jpg",
+                "width": 143,
+                "height": 100
+            },
+            {
+                "src": "data/attachment/forum/201901/03/181350s3oxenkxxo37328s.jpg",
+                "width": 96,
+                "height": 100
+            },
+            {
+                "src": "data/attachment/forum/201901/03/181352eyw3bqy5bzqmzj5n.jpg",
+                "width": 82,
+                "height": 100
+            },
+            {
+                "src": "data/attachment/forum/201901/03/181352ld5ay07hfc55yoko.jpg",
+                "width": 137,
+                "height": 100
+            },
+            {
+                "src": "data/attachment/forum/201901/03/181346xzrkvivokpbdpc3i.jpg",
+                "width": 85,
+                "height": 100
+            },
+            {
+                "src": "data/attachment/forum/201901/24/132724mxaf3d6fqd63zciq.png",
+                "width": 85,
+                "height": 100
+            }
+        ]
     }
 }

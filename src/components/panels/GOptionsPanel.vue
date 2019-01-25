@@ -44,6 +44,13 @@
                    v-on:change="toggle('enable_blacklist')">
             <label for="enable_blacklist">Enable Blacklist</label>
         </p>
+        <p>
+            <input type="checkbox"
+                   name="enable_extemojis"
+                   v-model="enable_extemojis"
+                   v-on:change="toggle('enable_extemojis')">
+            <label for="enable_extemojis">Enable Extra Emojis</label>
+        </p>
     </section>
     <section>
         <h3>Import/Export</h3>
@@ -60,6 +67,7 @@
 </template>
 
 <script>
+import merge from '../../core/base/merge.js';
 import storage from '../../core/base/storage.js';
 
 export default {
@@ -72,7 +80,8 @@ export default {
             todaysay: '',
             enable_auto_sign: true,
             enable_farm_kit: true,
-            enable_blacklist: true
+            enable_blacklist: true,
+            enable_extemojis: true
         };
     },
     async created() {
@@ -127,10 +136,12 @@ export default {
             const file = event.target.files[0];
             if (file) {
                 let reader = new FileReader();
+                let items = await storage.getAll();
                 reader.onload = function(ev) {
                     try {
                         const parsed = JSON.parse(ev.target.result);
-                        storage.seed(parsed);
+                        items = merge(items, parsed);
+                        storage.seed(items);
                     } catch (e) {
                         console.log(e);
                     }
