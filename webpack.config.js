@@ -50,7 +50,7 @@ module.exports = {
             { from: './src/assets/HallOfFame', to: 'HallOfFame', toType: 'file' }
         ]),
         new MiniCssExtractPlugin({
-            filename: 'css/popup.css'
+            filename: 'css/[name].css'
         })
     ],
     // TODO(luciusgone): remove this when building releases

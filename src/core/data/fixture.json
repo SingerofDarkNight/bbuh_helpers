@@ -25,8 +25,7 @@
         "enable_auto_sign": true,
         "enable_farm_kit": true,
         "enable_blacklist": true,
-        "enable_extemojis": true,
-        "extemojis_button": "data/attachment/forum/201901/24/133551wre4uvwwxuxu4mzp.png"
+        "enable_extemojis": true
     },
     "extemojis": {
         "pandahead": [

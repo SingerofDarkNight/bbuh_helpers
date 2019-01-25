@@ -67,7 +67,7 @@
 </template>
 
 <script>
-import * as deepmerge from 'deepmerge';
+import merge from '../../core/base/merge.js';
 import storage from '../../core/base/storage.js';
 
 export default {
@@ -140,7 +140,7 @@ export default {
                 reader.onload = function(ev) {
                     try {
                         const parsed = JSON.parse(ev.target.result);
-                        items = deepmerge(items, parsed);
+                        items = merge(items, parsed);
                         storage.seed(items);
                     } catch (e) {
                         console.log(e);

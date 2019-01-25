@@ -33,5 +33,9 @@
         "storage",
         "https://bbs.bbuhot.com/*"
     ],
+    "web_accessible_resources": [
+        "icons/icon48x48.png",
+        "css/extra_emojis.css"
+    ],
     "manifest_version": 2
 }
