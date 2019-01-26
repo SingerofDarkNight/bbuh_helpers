@@ -1,3 +1,3 @@
-import { messageHandler } from '../core/Listeners.js';
+import messageHandler from '../core/listeners/message.js';
 
 chrome.runtime.onMessage.addListener(messageHandler);
