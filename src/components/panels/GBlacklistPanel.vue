@@ -106,7 +106,6 @@ export default {
 }
 
 .remove:hover {
-    text-decoration: underline;
     color: red;
 }
 
