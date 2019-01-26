@@ -2,7 +2,10 @@
 <div id="app">
     <header>
         <h1>{{ _('extName') }}</h1>
-        <button v-on:click="toggleOptionsPage">{{ caption }}</button>
+        <button v-on:click="toggleOptionsPage">
+            <font-awesome-icon v-if="isOptionsPageVisible" icon="window-close"></font-awesome-icon>
+            <font-awesome-icon v-else icon="cogs"></font-awesome-icon>
+        </button>
     </header>
     <component v-bind:is="currentPage" class="main"></component>
 </div>
@@ -26,9 +29,6 @@ export default {
     computed: {
         currentPage() {
             return this.isOptionsPageVisible ? "GOptionsPage" : "GTabsPage";
-        },
-        caption() {
-            return this.isOptionsPageVisible ? "X" : "Options";
         }
     },
     methods: {

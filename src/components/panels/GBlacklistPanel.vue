@@ -7,7 +7,7 @@
             <button v-on:click="add('keyword')">{{ _('blockWordButton') }}</button>
         </div>
     </div>
-    <div>
+    <div v-if="!isEmpty(blacklist)">
         <h2>{{ _('blacklistHeading') }}</h2>
         <div id="listcontainer">
             <p class="listitem" v-for="(type, word) in blacklist">
@@ -15,7 +15,9 @@
                 <span class="type">{{ _(type + 'BlacklistType') }}</span>
                 <span class="remove"
                       v-on:click="remove(word)"
-                      v-bind:title="_('deleteTooltip')">Remove</span>
+                      v-bind:title="_('deleteTooltip')">
+                    <font-awesome-icon icon="trash-alt"></font-awesome-icon>
+                </span>
             </p>
         </div>
     </div>
@@ -27,9 +29,11 @@
 
 <script>
 import storage from '../../core/base/storage.js';
+import isEmpty from '../mixins/isEmpty.js';
 
 export default {
     name: 'GBlacklistPanel',
+    mixins: [isEmpty],
     data() {
         return {
             loaded: false,
@@ -98,11 +102,12 @@ export default {
 .remove {
     width: 10%;
     cursor: pointer;
+    text-align: center;
 }
 
 .remove:hover {
     text-decoration: underline;
-    color: darkcyan;
+    color: red;
 }
 
 .warning {
