@@ -1,5 +1,7 @@
 //TODO(luciusgone): we have to keep styles here because they have higher precedence than external css file
-const buttonStyle = 'float: right; background: #f2f2f2;';
+const buttonStyle = 'float: right; background: #f2f2f2; padding-right: 5px;';
+
+const buttonImgStyle = 'cursor: pointer;';
 
 const containerStyle = 'box-sizing: border-box; width: 300px;' +
                        ' max-height: 240px; overflow-y: scroll;' +
@@ -220,6 +222,7 @@ export default class ExtraEmojis {
         img.setAttribute('src', this.button_url)
         img.setAttribute('width', '24');
         img.setAttribute('height', '24');
+        img.style = buttonImgStyle;
 
         a.addEventListener('click', this.showExtraEmoji.bind(this), false);
         a.appendChild(img);

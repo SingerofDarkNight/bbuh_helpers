@@ -1,23 +1,35 @@
 <template>
 <div v-if="loaded">
-    <p>Current Profile: <span class="currentprofile">{{ current ? current : "No tracked Profile" }}</span></p>
+    <p>{{ _('currentProfileLabel') }}<span class="currentprofile">{{ current ? current : _('noCurrentProfile') }}</span></p>
     <div class="controlls">
-        <button v-on:click="create">Add Profile</button>
-        <button v-on:click="switchToEmpty">Switch to Empty Profile</button>
+        <button v-on:click="create" v-bind:title="_('addTooltip')">
+            <font-awesome-icon icon="plus"></font-awesome-icon>
+        </button>
+        <button v-on:click="switchToEmpty" v-bind:title="_('emptyTooltip')">
+            <font-awesome-icon icon="eraser"></font-awesome-icon>
+        </button>
     </div>
-    <div>
-        <h2>Profile List</h2>
+    <div v-if="!isEmpty(profiles)">
+        <h2>{{ _('profileListHeading') }}</h2>
         <div id="listcontainer">
             <p class="listitem" v-for="(username, uid) in profiles">
                 <span class="username">{{ username }}</span>
-                <span class="switch" v-on:click="switchTo(uid)">Switch</span>
-                <span class="remove"v-on:click="remove(uid)">Remove</span>
+                <span class="switch"
+                      v-on:click="switchTo(uid)"
+                      v-bind:title="_('switchTooltip')">
+                    <font-awesome-icon icon="exchange-alt"></font-awesome-icon>
+                </span>
+                <span class="remove"
+                      v-on:click="remove(uid)"
+                      v-bind:title="_('deleteTooltip')">
+                    <font-awesome-icon icon="trash-alt"></font-awesome-icon>
+                </span>
             </p>
         </div>
     </div>
 </div>
 <div v-else>
-    <p>loading</p>
+    <p>{{ _('labelLoading') }}</p>
 </div>
 </template>
 
@@ -25,9 +37,11 @@
 import cookies from '../../core/base/cookies.js';
 import messages from '../../core/base/messages.js';
 import storage from '../../core/base/storage.js';
+import isEmpty from '../mixins/isEmpty.js';
 
 export default {
     name: 'GProfilesPanel',
+    mixins: [isEmpty],
     data() {
         return {
             loaded: false,
@@ -119,12 +133,13 @@ export default {
 //listcontainer and listitem style are set in GBlacklistPanel
 
 .username {
-    width: 60%;
+    width: 80%;
 }
 
 .switch {
-    width: 20%;
+    width: 10%;
     cursor: pointer;
+    text-align: center;
 }
 
 .switch:hover {

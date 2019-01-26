@@ -6,7 +6,7 @@
             v-bind:key="tab"
             v-bind:class="[{active: currentTab == tab}]"
             v-on:click="changeTab(tab)"
-        >{{tab}}</li>
+        >{{ _('label' + tab)}}</li>
     </ul>
     <keep-alive>
         <component v-bind:is="currentTabComponent" class="panel"></component>
@@ -39,7 +39,7 @@ export default {
     computed: {
         currentTabComponent() {
             return `G${this.currentTab}Panel`;
-        }
+        },
     },
     methods: {
         async changeTab(tab) {

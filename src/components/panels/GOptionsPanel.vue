@@ -1,68 +1,67 @@
 <template>
 <div v-if="loaded">
-    <h2>Options</h2>
-    <p>Know What You Do and Change It.</p>
+    <h2>{{ _('settingsHeading') }}</h2>
+    <p>{{ _('settingsNotice') }}</p>
     <section>
-        <h3>User Levels</h3>
-        <p>You should not modify this most of the time.</p>
-        <p>The input only accept a list of numbers seperated by commas.</p>
+        <h3>{{ _('userLevelsHeading') }}</h3>
+        <p>{{ _('userLevelsNotice') }}</p>
         <input type="text" v-model.trim="userlevels">
-        <button type="button" v-on:click="saveUserLevels">Save</button>
+        <button type="button" v-on:click="saveUserLevels">{{ _('labelSave')  }}</button>
     </section>
     <section>
-        <h3>Main Post Label</h3>
-        <p>The main post label is used to block user replies by levels</p>
+        <h3>{{ _('mainPostLabelHeading') }}</h3>
+        <p>{{ _('mainPostLabelNotice') }}</p>
         <input type="text" v-model.trim="main_post_label">
-        <button type="button" v-on:click="saveText('main_post_label')">Save</button>
+        <button type="button" v-on:click="saveText('main_post_label')">{{ _('labelSave')  }}</button>
     </section>
     <section>
-        <h3>Emotions</h3>
-        <p>The emotion string is used by auto sign.</p>
+        <h3>{{ _('emotionsHeading') }}</h3>
+        <p>{{ _('emotionsNotice') }}</p>
         <input type="text" v-model.trim="todaysay">
-        <button type="button" v-on:click="saveText('todaysay')">Save</button>
+        <button type="button" v-on:click="saveText('todaysay')">{{ _('labelSave')  }}</button>
     </section>
     <section>
-        <h3>Useful Switches</h3>
+        <h3>{{ _('switchesHeading') }}</h3>
         <p>
             <input type="checkbox"
                    name="enable_auto_sign"
                    v-model="enable_auto_sign"
                    v-on:change="toggle('enable_auto_sign')">
-            <label for="enable_auto_sign">Enable Auto Sign</label>
+            <label for="enable_auto_sign">{{ _('labelEnableAutoSign') }}</label>
         </p>
         <p>
             <input type="checkbox"
                    name="enable_farm_kit"
                    v-model="enable_farm_kit"
                    v-on:change="toggle('enable_farm_kit')">
-            <label for="enable_farm_kit">Enable Farm Kit</label>
+            <label for="enable_farm_kit">{{ _('labelEnableFarmKit') }}</label>
         </p>
         <p>
             <input type="checkbox"
                    name="enable_blacklist"
                    v-model="enable_blacklist"
                    v-on:change="toggle('enable_blacklist')">
-            <label for="enable_blacklist">Enable Blacklist</label>
+            <label for="enable_blacklist">{{ _('labelEnableBlacklist') }}</label>
         </p>
         <p>
             <input type="checkbox"
                    name="enable_extemojis"
                    v-model="enable_extemojis"
                    v-on:change="toggle('enable_extemojis')">
-            <label for="enable_extemojis">Enable Extra Emojis</label>
+            <label for="enable_extemojis">{{ _('labelEnableExtraEmojis') }}</label>
         </p>
     </section>
     <section>
-        <h3>Import/Export</h3>
+        <h3>{{ _('importExportHeading') }}</h3>
         <div class="controlls">
-            <label class="btn">Import<input type="file" accept=".json" v-on:change="importData">
+            <label class="btn">{{ _('labelImport') }}<input type="file" accept=".json" v-on:change="importData">
             </label>
-            <button type="button" v-on:click="exportData">Export</button>
+            <button type="button" v-on:click="exportData">{{ _('labelExport') }}</button>
         </div>
     </section>
 </div>
 <div v-else>
-    <p>loading</p>;
+    <p>{{ _('labelLoading') }}</p>;
 </div>
 </template>
 
