@@ -50,7 +50,7 @@ export function handlePost(event) {
     fastFarm(postmessage);
 }
 
-handlePost.text = 'Copy Post';
+handlePost.text = chrome.i18n.getMessage('labelCopyPost');
 handlePost.anchorsSelector = '.pti > .authi';
 
 
@@ -60,7 +60,7 @@ export function handleSign(event) {
     fastFarm(sign_el);
 }
 
-handleSign.text = 'Copy Sign';
+handleSign.text = chrome.i18n.getMessage('labelCopySign');
 handleSign.anchorsSelector = '.sign';
 
 export default class FarmKit {

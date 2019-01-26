@@ -1,7 +1,7 @@
 <template>
 <div id="app">
     <header>
-        <h1>Gotham Helpers</h1>
+        <h1>{{ _('extName') }}</h1>
         <button v-on:click="toggleOptionsPage">{{ caption }}</button>
     </header>
     <component v-bind:is="currentPage" class="main"></component>
@@ -84,6 +84,7 @@ export default {
         border: 1px;
         border-radius: 5px;
         margin: 3px 5px;
+        cursor: pointer;
     }
 
     input[type=text] {

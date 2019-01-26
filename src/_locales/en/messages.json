@@ -1,0 +1,186 @@
+{
+    "extName": {
+        "message": "Gotham Helpers",
+        "description": "Extension name"
+    },
+    "extDescription": {
+        "message": "BBUH! helpers",
+        "description": "Extension description"
+    },
+    "labelLoading": {
+        "message": "In a second, Mr Wayne",
+        "description": "loading label"
+    },
+    "addTooltip": {
+        "message": "Add Profile",
+        "description": "Add tooltip"
+    },
+    "switchTooltip": {
+        "message": "Switch",
+        "description": "Switch tooltip"
+    },
+    "emptyTooltip": {
+        "message": "Switch to Empty",
+        "description": "Switch to empty tooltip"
+    },
+    "deleteTooltip": {
+        "message": "Remove",
+        "description": "Delete tooltip"
+    },
+    "encodeTooltip": {
+        "message": "Encode",
+        "description": "Encode tooltip"
+    },
+    "decodeTooltip": {
+        "message": "Decode",
+        "description": "decode tooltip"
+    },
+    "labelBlacklistDisabled": {
+        "message": "Blacklist Feature disabled",
+        "description": "Disabled notice"
+    },
+    "labelProfiles": {
+        "message": "Profiles",
+        "description": "Profiles tab label"
+    },
+    "labelBlacklist": {
+        "message": "Blacklist",
+        "description": "Blacklist tab label"
+    },
+    "labelEncoding": {
+        "message": "Encoding",
+        "description": "Encoding tab label"
+    },
+    "labelMisc": {
+        "message": "Misc",
+        "description": "Misc tab label"
+    },
+    "blockUserButton": {
+        "message": "Block This User",
+        "description": "Block user button label"
+    },
+    "blockWordButton": {
+        "message": "Block This Word",
+        "description": "Block word button label"
+    },
+    "blacklistHeading": {
+        "message": "Blacklist",
+        "description": "Blacklist heading"
+    },
+    "userBlacklistType": {
+        "message": "user",
+        "description": "Blocked type of user"
+    },
+    "keywordBlacklistType": {
+        "message": "keyword",
+        "description": "Blocked type of keyword"
+    },
+    "bothBlacklistType": {
+        "message": "both",
+        "description": "Blocked type of both"
+    },
+    "encodingHint": {
+        "message": "What to encode today? Mr Wayne.",
+        "description": "Encoding placeholer"
+    },
+    "labelHideMedal": {
+        "message": "Hide Medals",
+        "description": "Hide medal label"
+    },
+    "labelHideSign": {
+        "message": "Hide Signs",
+        "description": "Hide sign label"
+    },
+    "labelHideReply": {
+        "message": "Hide Replies by Levels, less than",
+        "description": "Hide reply label"
+    },
+    "currentProfileLabel": {
+        "message": "Current Profile: ",
+        "description": "Current profile label"
+    },
+    "noCurrentProfile": {
+        "message": "No tracked Profile",
+        "description": "No profile documented"
+    },
+    "profileListHeading": {
+        "message": "Profiles List",
+        "description": "Profiles list heading"
+    },
+    "settingsHeading": {
+        "message": "Options",
+        "description": "settings Heading"
+    },
+    "settingNotice": {
+        "message": "Know What You Do and Change It.",
+        "description": "Setting Notice"
+    },
+    "userLevelsHeading": {
+        "message": "User Levels",
+        "description": "User levels heading"
+    },
+    "userLevelsNotice": {
+        "message": "The input only accept a list of numbers seperated by commas.",
+        "description": "User levels notice"
+    },
+    "mainPostLabelHeading": {
+        "message": "Main Post Label",
+        "description": "Main post label heading"
+    },
+    "mainPostLabelNotice": {
+        "message": "The main post label is used to block user replies by levels",
+        "description": "Main post label notice"
+    },
+    "emotionsHeading": {
+        "message": "Emotions",
+        "description": "Emotions words heading"
+    },
+    "emotionsNotice": {
+        "message": "The emotion string is used by auto sign.",
+        "description": "Emotions notice"
+    },
+    "switchesHeading": {
+        "message": "Useful Switches",
+        "description": "Useful switches heading"
+    },
+    "importExportHeading": {
+        "message": "Import/Export",
+        "description": "Import/Export heading"
+    },
+    "labelEnableAutoSign": {
+        "message": "Enable Auto Sign",
+        "description": "Label for enable auto sign"
+    },
+    "labelEnableFarmKit": {
+        "message": "Enable Farm Kit",
+        "description": "Label for enable farm kit"
+    },
+    "labelEnableBlacklist": {
+        "message": "Enable Blacklist",
+        "description": "Label for enable blacklist"
+    },
+    "labelEnableExtraEmojis": {
+        "message": "Enable Extra Emojis",
+        "description": "Label for enable extra emojis"
+    },
+    "labelImport": {
+        "message": "Import",
+        "description": "label for import"
+    },
+    "labelExport": {
+        "message": "Export",
+        "description": "label for export"
+    },
+    "labelSave": {
+        "message": "Save",
+        "description": "label for save"
+    },
+    "labelCopyPost": {
+        "message": "Copy Post",
+        "description": "Copy post"
+    },
+    "labelCopySign": {
+        "message": "Copy Sign",
+        "description": "Copy sign"
+    }
+}

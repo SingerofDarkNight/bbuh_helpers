@@ -1,0 +1,186 @@
+{
+    "extName": {
+        "message": "哥谭助手",
+        "description": "Extension name"
+    },
+    "extDescription": {
+        "message": "哥谭谷歌浏览器插件",
+        "description": "Extension description"
+    },
+    "labelLoading": {
+        "message": "韦恩先生稍等",
+        "description": "loading label"
+    },
+    "addTooltip": {
+        "message": "添加账号",
+        "description": "Add tooltip"
+    },
+    "switchTooltip": {
+        "message": "切换",
+        "description": "Switch tooltip"
+    },
+    "emptyTooltip": {
+        "message": "切换到空账号",
+        "description": "Switch to empty tooltip"
+    },
+    "deleteTooltip": {
+        "message": "删除",
+        "description": "Delete tooltip"
+    },
+    "encodeTooltip": {
+        "message": "加密",
+        "description": "Encode tooltip"
+    },
+    "decodeTooltip": {
+        "message": "解密",
+        "description": "decode tooltip"
+    },
+    "labelBlacklistDisabled": {
+        "message": "黑名单已被禁用",
+        "description": "Disabled notice"
+    },
+    "labelProfiles": {
+        "message": "账号",
+        "description": "Profiles tab label"
+    },
+    "labelBlacklist": {
+        "message": "黑名单",
+        "description": "Blacklist tab label"
+    },
+    "labelEncoding": {
+        "message": "密文",
+        "description": "Encoding tab label"
+    },
+    "labelMisc": {
+        "message": "杂项",
+        "description": "Misc tab label"
+    },
+    "blockUserButton": {
+        "message": "屏蔽用户",
+        "description": "Block user button label"
+    },
+    "blockWordButton": {
+        "message": "屏蔽此词",
+        "description": "Block word button label"
+    },
+    "blacklistHeading": {
+        "message": "黑名单列表",
+        "description": "Blacklist heading"
+    },
+    "userBlacklistType": {
+        "message": "用户",
+        "description": "Blocked type of user"
+    },
+    "keywordBlacklistType": {
+        "message": "关键词",
+        "description": "Blocked type of keyword"
+    },
+    "bothBlacklistType": {
+        "message": "用户+关键词",
+        "description": "Blocked type of both"
+    },
+    "encodingHint": {
+        "message": "韦恩先生，今天要加密点什么...",
+        "description": "Encoding placeholer"
+    },
+    "labelHideMedal": {
+        "message": "隐藏勋章",
+        "description": "Hide medal label"
+    },
+    "labelHideSign": {
+        "message": "隐藏签名",
+        "description": "Hide sign label"
+    },
+    "labelHideReply": {
+        "message": "隐藏回复，等级低于",
+        "description": "Hide reply label"
+    },
+    "currentProfileLabel": {
+        "message": "当前账号：",
+        "description": "Current profile label"
+    },
+    "noCurrentProfile": {
+        "message": "没有记录的账号",
+        "description": "No profile documented"
+    },
+    "profileListHeading": {
+        "message": "账号列表",
+        "description": "Profiles list heading"
+    },
+    "settingsHeading": {
+        "message": "设置",
+        "description": "settings Heading"
+    },
+    "settingNotice": {
+        "message": "更改时请慎重",
+        "description": "Setting Notice"
+    },
+    "userLevelsHeading": {
+        "message": "用户等级",
+        "description": "User levels heading"
+    },
+    "userLevelsNotice": {
+        "message": "下面的文本框仅支持用半角逗号分开的数字作为输入",
+        "description": "User levels notice"
+    },
+    "mainPostLabelHeading": {
+        "message": "主楼帖名称",
+        "description": "Main post label heading"
+    },
+    "mainPostLabelNotice": {
+        "message": "主楼帖名称用来防止主楼帖被屏蔽",
+        "description": "Main post label notice"
+    },
+    "emotionsHeading": {
+        "message": "签到心情",
+        "description": "Emotions words heading"
+    },
+    "emotionsNotice": {
+        "message": "签到心情用来自动签到",
+        "description": "Emotions notice"
+    },
+    "switchesHeading": {
+        "message": "功能开关",
+        "description": "Useful switches heading"
+    },
+    "importExportHeading": {
+        "message": "导入/导出",
+        "description": "Import/Export heading"
+    },
+    "labelEnableAutoSign": {
+        "message": "开启自动签到",
+        "description": "Label for enable auto sign"
+    },
+    "labelEnableFarmKit": {
+        "message": "开启一键伐木",
+        "description": "Label for enable farm kit"
+    },
+    "labelEnableBlacklist": {
+        "message": "开启黑名单",
+        "description": "Label for enable blacklist"
+    },
+    "labelEnableExtraEmojis": {
+        "message": "开启额外的表情",
+        "description": "Label for enable extra emojis"
+    },
+    "labelImport": {
+        "message": "导入",
+        "description": "label for import"
+    },
+    "labelExport": {
+        "message": "导出",
+        "description": "label for export"
+    },
+    "labelSave": {
+        "message": "保存",
+        "description": "label for save"
+    },
+    "labelCopyPost": {
+        "message": "复制伐木",
+        "description": "Copy post"
+    },
+    "labelCopySign": {
+        "message": "复制签名",
+        "description": "Copy sign"
+    }
+}

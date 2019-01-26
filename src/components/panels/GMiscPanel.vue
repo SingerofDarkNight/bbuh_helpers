@@ -5,21 +5,21 @@
                name="hide_medals"
                v-model="hide_medals"
                v-on:change="toggle('hide_medals')">
-        <label for="hide_medals">Hide Medals</label>
+        <label for="hide_medals">{{ _('labelHideMedal') }}</label>
     </p>
     <p>
         <input type="checkbox"
                name="hide_signs"
                v-model="hide_signs"
                v-on:change="toggle('hide_signs')">
-        <label for="hide_signs">Hide Signs</label>
+        <label for="hide_signs">{{ _('labelHideSign') }}</label>
     </p>
     <p>
         <input type="checkbox"
                name="hide_replies"
                v-model="hide_replies"
                v-on:change="toggle('hide_replies')">
-        <label for="hide_replies">Hide Replies by levels, less than</label>
+        <label for="hide_replies">{{ _('labelHideReply') }}</label>
 
         <select name="user_levels"
                 v-model="min_level"
@@ -32,7 +32,7 @@
     </p>
 </div>
 <div v-else>
-    <p>loading</p>
+    <p>{{ _('labelLoading') }}</p>
 </div>
 </template>
 

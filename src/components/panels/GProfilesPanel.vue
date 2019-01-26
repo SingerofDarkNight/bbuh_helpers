@@ -1,23 +1,27 @@
 <template>
 <div v-if="loaded">
-    <p>Current Profile: <span class="currentprofile">{{ current ? current : "No tracked Profile" }}</span></p>
+    <p>{{ _('currentProfileLabel') }}<span class="currentprofile">{{ current ? current : _('noCurrentProfile') }}</span></p>
     <div class="controlls">
-        <button v-on:click="create">Add Profile</button>
-        <button v-on:click="switchToEmpty">Switch to Empty Profile</button>
+        <button v-on:click="create" v-bind:title="_('addTooltip')">Add Profile</button>
+        <button v-on:click="switchToEmpty" v-bind:title="_('emptyTooltip')">Switch to Empty Profile</button>
     </div>
     <div>
-        <h2>Profile List</h2>
+        <h2>{{ _('profileListHeading') }}</h2>
         <div id="listcontainer">
             <p class="listitem" v-for="(username, uid) in profiles">
                 <span class="username">{{ username }}</span>
-                <span class="switch" v-on:click="switchTo(uid)">Switch</span>
-                <span class="remove"v-on:click="remove(uid)">Remove</span>
+                <span class="switch"
+                      v-on:click="switchTo(uid)"
+                      v-bind:title="_('switchTooltip')">Switch</span>
+                <span class="remove"
+                      v-on:click="remove(uid)"
+                      v-bind:title="_('deleteTooltip')">Remove</span>
             </p>
         </div>
     </div>
 </div>
 <div v-else>
-    <p>loading</p>
+    <p>{{ _('labelLoading') }}</p>
 </div>
 </template>
 

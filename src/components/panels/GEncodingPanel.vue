@@ -1,9 +1,13 @@
 <template>
 <div>
-    <textarea v-model.trim="decoded" placeholder="What to encode today? Mr Wayne."></textarea>
+    <textarea v-model.trim="decoded" v-bind:placeholder="_('encodingHint')"></textarea>
     <div class="controlls">
-        <button type="button" v-on:click="encodeMessage">&darr;</button>
-        <button type="button" v-on:click="decodeMessage">&uarr;</button>
+        <button type="button"
+                v-on:click="encodeMessage"
+                v-bind:title="_('encodeTooltip')">&darr;</button>
+        <button type="button"
+                v-on:click="decodeMessage"
+                v-bind:title="_('decodeTooltip')">&uarr;</button>
     </div>
     <textarea v-model.trim="encoded"></textarea>
 </div>

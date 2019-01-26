@@ -46,6 +46,7 @@ module.exports = {
             { from: './src/assets/licenses/*', to: 'licenses/[name]', toType: 'template' },
             { from: './src/assets/DISTLICENSE', to: 'LICENSE', toType: 'file' },
             { from: './src/assets/HallOfFame', to: 'HallOfFame', toType: 'file' },
+            { from: './src/_locales', to: '_locales', toType: 'dir' },
             { from: './src/*.html', to: 'html/[name].[ext]', toType: 'template' },
             { from: './src/manifest.json', to: 'manifest.json', toType: 'file' }
         ]),
