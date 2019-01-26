@@ -1,5 +1,5 @@
 //TODO(luciusgone): we have to keep styles here because they have higher precedence than external css file
-const buttonStyle = 'float: right; background: #f2f2f2;';
+const buttonStyle = 'float: right; background: #f2f2f2; padding-right: 5px;';
 
 const containerStyle = 'box-sizing: border-box; width: 300px;' +
                        ' max-height: 240px; overflow-y: scroll;' +

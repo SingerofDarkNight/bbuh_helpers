@@ -1,5 +1,6 @@
 import 'chrome-extension-async';
-import { pageActionHandler, installFixtureHandler } from '../core/Listeners.js'
+import installFixtureHandler from '../core/listeners/install.js';
+import pageActionHandler from '../core/listeners/page_action.js';
 
 // show and hide page actions
 chrome.tabs.onUpdated.addListener(pageActionHandler);
