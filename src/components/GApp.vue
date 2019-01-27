@@ -74,6 +74,9 @@ export default {
 
     section {
         padding: 3px 5px;
+        margin: 3px 5px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
     }
 
     .btn, button {
@@ -102,7 +105,7 @@ export default {
     textarea {
         width: 100%;
         height: 120px;
-        border: 1px solid black;
+        border: 1px solid #ccc;
         border-radius: 5px;
         padding: 5px 5px;
         margin: 5px 0;
