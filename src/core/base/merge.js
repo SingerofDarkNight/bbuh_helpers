@@ -1,5 +1,6 @@
 import * as deepmerge from 'deepmerge';
 
+// eslint-disable-next-line no-unused-vars
 function overwriteMerge(destinationArray, sourceArray, options) {
     return sourceArray;
 }

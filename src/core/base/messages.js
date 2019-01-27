@@ -12,7 +12,7 @@ class Messages {
     async send(type) {
         try {
             const tab = await this.currentTab();
-            const response = await this.source.sendMessage(tab.id, {"type": type });
+            const response = await this.source.sendMessage(tab.id, {'type': type });
 
             return response;
         } catch (e) {

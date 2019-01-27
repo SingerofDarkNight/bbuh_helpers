@@ -1,36 +1,56 @@
 <template>
-<div v-if="loaded">
-    <p>{{ _('currentProfileLabel') }}<span class="currentprofile">{{ current ? current : _('noCurrentProfile') }}</span></p>
+  <div v-if="loaded">
+    <p>
+      {{ _('currentProfileLabel') }}<span class="currentprofile">
+        {{ current ? current : _('noCurrentProfile') }}
+      </span>
+    </p>
     <div class="controlls">
-        <button v-on:click="create" v-bind:title="_('addTooltip')">
-            <font-awesome-icon icon="plus"></font-awesome-icon>
-        </button>
-        <button v-on:click="switchToEmpty" v-bind:title="_('emptyTooltip')">
-            <font-awesome-icon icon="eraser"></font-awesome-icon>
-        </button>
+      <button
+        :title="_('addTooltip')"
+        @click="create"
+      >
+        <font-awesome-icon icon="plus" />
+      </button>
+      <button
+        :title="_('emptyTooltip')"
+        @click="switchToEmpty"
+      >
+        <font-awesome-icon icon="eraser" />
+      </button>
     </div>
     <div v-if="!isEmpty(profiles)">
-        <h2>{{ _('profileListHeading') }}</h2>
-        <div id="listcontainer">
-            <p class="listitem" v-for="(username, uid) in profiles">
-                <span class="username">{{ username }}</span>
-                <span class="switch"
-                      v-on:click="switchTo(uid)"
-                      v-bind:title="_('switchTooltip')">
-                    <font-awesome-icon icon="exchange-alt"></font-awesome-icon>
-                </span>
-                <span class="remove"
-                      v-on:click="remove(uid)"
-                      v-bind:title="_('deleteTooltip')">
-                    <font-awesome-icon icon="trash-alt"></font-awesome-icon>
-                </span>
-            </p>
-        </div>
+      <h2>{{ _('profileListHeading') }}</h2>
+      <div id="listcontainer">
+        <p
+          v-for="(username, uid) in profiles"
+          :key="uid"
+          class="listitem"
+        >
+          <span class="username">
+            {{ username }}
+          </span>
+          <span
+            class="switch"
+            :title="_('switchTooltip')"
+            @click="switchTo(uid)"
+          >
+            <font-awesome-icon icon="exchange-alt" />
+          </span>
+          <span
+            class="remove"
+            :title="_('deleteTooltip')"
+            @click="remove(uid)"
+          >
+            <font-awesome-icon icon="trash-alt" />
+          </span>
+        </p>
+      </div>
     </div>
-</div>
-<div v-else>
+  </div>
+  <div v-else>
     <p>{{ _('labelLoading') }}</p>
-</div>
+  </div>
 </template>
 
 <script>

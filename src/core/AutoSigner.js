@@ -1,6 +1,6 @@
 export default class AutoSigner {
     constructor(todaysay) {
-        this.todaysay = todaysay
+        this.todaysay = todaysay;
     }
 
     isSigned() {
@@ -23,18 +23,19 @@ export default class AutoSigner {
     }
 
     inputMood() {
+        var target;
         const modes = document.querySelectorAll('input[name^=qdmode]');
         const selected_mode = this.randomInt(modes.length);
         modes[selected_mode].click();
 
         switch (selected_mode) {
             case 0:
-                let todaysay = document.querySelector('#todaysay');
-                todaysay.value = this.todaysay;
+                target = document.querySelector('#todaysay');
+                target.value = this.todaysay;
                 break;
             case 1:
-                let fastreply = document.querySelector('select[name=fastreply]');
-                fastreply.selectedIndex = this.randomInt(fastreply.length);
+                target = document.querySelector('select[name=fastreply]');
+                target.selectedIndex = this.randomInt(target.length);
                 break;
             default:
                 throw 'Invalid mode';
@@ -50,7 +51,7 @@ export default class AutoSigner {
             const form = document.querySelector('#qiandao');
             form.submit();
         } catch (e) {
-            console.log(e);
+            alert('Internal Error from AutoSigner');
         }
     }
 }

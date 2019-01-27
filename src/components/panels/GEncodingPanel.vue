@@ -1,20 +1,27 @@
 <template>
-<div>
-    <textarea v-model.trim="decoded" v-bind:placeholder="_('encodingHint')"></textarea>
+  <div>
+    <textarea
+      v-model.trim="decoded"
+      :placeholder="_('encodingHint')"
+    />
     <div class="controlls">
-        <button type="button"
-                v-on:click="encodeMessage"
-                v-bind:title="_('encodeTooltip')">
-            <font-awesome-icon icon="angle-double-down"></font-awesome-icon>
-        </button>
-        <button type="button"
-                v-on:click="decodeMessage"
-                v-bind:title="_('decodeTooltip')">
-            <font-awesome-icon icon="angle-double-up"></font-awesome-icon>
-        </button>
+      <button
+        type="button"
+        :title="_('encodeTooltip')"
+        @click="encodeMessage"
+      >
+        <font-awesome-icon icon="angle-double-down" />
+      </button>
+      <button
+        type="button"
+        :title="_('decodeTooltip')"
+        @click="decodeMessage"
+      >
+        <font-awesome-icon icon="angle-double-up" />
+      </button>
     </div>
-    <textarea v-model.trim="encoded"></textarea>
-</div>
+    <textarea v-model.trim="encoded" />
+  </div>
 </template>
 
 <script>

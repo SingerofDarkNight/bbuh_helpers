@@ -4,4 +4,4 @@ export default {
             return chrome.i18n.getMessage(...args);
         }
     }
-}
+};
