@@ -121,6 +121,7 @@ export class ForumModifier {
         this.observeOpts = observeOpts || { childList: true, subtree: true };
     }
 
+    // eslint-disable-next-line no-unused-vars
     observerCallback(mutationList, observer) {
         const operations = this.operations;
 

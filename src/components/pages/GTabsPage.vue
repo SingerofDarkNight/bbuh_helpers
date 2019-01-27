@@ -1,17 +1,25 @@
 <template>
-<main role="main" v-if="loaded">
+  <main
+    v-if="loaded"
+    role="main"
+  >
     <ul class="tabs">
-        <li
-            v-for="tab in tabs"
-            v-bind:key="tab"
-            v-bind:class="[{active: currentTab == tab}]"
-            v-on:click="changeTab(tab)"
-        >{{ _('label' + tab)}}</li>
+      <li
+        v-for="tab in tabs"
+        :key="tab"
+        :class="[{active: currentTab == tab}]"
+        @click="changeTab(tab)"
+      >
+        {{ _('label' + tab) }}
+      </li>
     </ul>
     <keep-alive>
-        <component v-bind:is="currentTabComponent" class="panel"></component>
+      <component
+        :is="currentTabComponent"
+        class="panel"
+      />
     </keep-alive>
-</main>
+  </main>
 </template>
 
 <script>
@@ -24,22 +32,28 @@ import GProfilesPanel from '../panels/GProfilesPanel.vue';
 
 export default {
     name: 'GTabsPage',
+    components: {
+        GBlacklistPanel,
+        GEncodingPanel,
+        GMiscPanel,
+        GProfilesPanel
+    },
     data() {
         return {
             loaded: false,
             currentTab: '',
             tabs: ['Profiles', 'Blacklist', 'Encoding', 'Misc']
-        }
-    },
-    async created() {
-        const meta = await storage.get('meta');
-        this.currentTab = meta.last_opened_tab;
-        this.loaded = true;
+        };
     },
     computed: {
         currentTabComponent() {
             return `G${this.currentTab}Panel`;
         },
+    },
+    async created() {
+        const meta = await storage.get('meta');
+        this.currentTab = meta.last_opened_tab;
+        this.loaded = true;
     },
     methods: {
         async changeTab(tab) {
@@ -48,12 +62,6 @@ export default {
             meta.last_opened_tab = tab;
             await storage.save('meta', meta);
         }
-    },
-    components: {
-        GBlacklistPanel,
-        GEncodingPanel,
-        GMiscPanel,
-        GProfilesPanel
     }
 };
 </script>

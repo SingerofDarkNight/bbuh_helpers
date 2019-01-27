@@ -3,6 +3,9 @@ DEV_ENV=
 dev: DEV_ENV=development
 dev: build
 
+lint:
+	yarn run lint
+
 dist: DEV_ENV=production
 dist: clean install_deps build
 

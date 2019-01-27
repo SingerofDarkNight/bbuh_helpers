@@ -1,14 +1,23 @@
 <template>
-<div id="app">
+  <div id="app">
     <header>
-        <h1>{{ _('extName') }}</h1>
-        <button v-on:click="toggleOptionsPage">
-            <font-awesome-icon v-if="isOptionsPageVisible" icon="window-close"></font-awesome-icon>
-            <font-awesome-icon v-else icon="cogs"></font-awesome-icon>
-        </button>
+      <h1>{{ _('extName') }}</h1>
+      <button @click="toggleOptionsPage">
+        <font-awesome-icon
+          v-if="isOptionsPageVisible"
+          icon="window-close"
+        />
+        <font-awesome-icon
+          v-else
+          icon="cogs"
+        />
+      </button>
     </header>
-    <component v-bind:is="currentPage" class="main"></component>
-</div>
+    <component
+      :is="currentPage"
+      class="main"
+    />
+  </div>
 </template>
 
 <script>
@@ -17,18 +26,18 @@ import GOptionsPage from './pages/GOptionsPage.vue';
 
 export default {
     name: 'GApp',
+    components: {
+        GTabsPage,
+        GOptionsPage
+    },
     data() {
         return {
             isOptionsPageVisible: false
         };
     },
-    components: {
-        GTabsPage,
-        GOptionsPage
-    },
     computed: {
         currentPage() {
-            return this.isOptionsPageVisible ? "GOptionsPage" : "GTabsPage";
+            return this.isOptionsPageVisible ? 'GOptionsPage' : 'GTabsPage';
         }
     },
     methods: {

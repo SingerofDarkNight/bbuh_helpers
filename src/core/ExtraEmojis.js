@@ -188,6 +188,7 @@ class ExtraEmojisPreviewer {
         this.activeSet = set;
     }
 
+    // eslint-disable-next-line no-unused-vars
     hide(event) {
         setTimeout(() => this.node.style.display = 'none', 300);
     }
