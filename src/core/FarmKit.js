@@ -39,7 +39,7 @@ function fastFarm(node) {
 
     let fastpostmessage = document.querySelector('#fastpostmessage');
     fastpostmessage.value = bbcode;
-    document.querySelector('#fastpostform').submit();
+    document.querySelector('#fastpostsubmit').click();
 }
 
 export function handlePost(event) {
