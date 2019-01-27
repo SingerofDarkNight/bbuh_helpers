@@ -4,8 +4,7 @@ const CopyWebpackPlugin = require('copy-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 module.exports = {
-    // TODO(luciusgone): We have to use production to avoid content security problem for now
-    mode: 'production',
+    mode: process.env.NODE_ENV !== 'production' ? 'development' : 'production',
     entry: {
         // background script
         background: './src/content_script/background.js',
@@ -42,24 +41,46 @@ module.exports = {
     plugins: [
         new VueLoaderPlugin(),
         new CopyWebpackPlugin([
-            { from: './src/assets/icons/*.png', to: 'icons/[name].[ext]', toType: 'template' },
-            { from: './src/assets/licenses/*', to: 'licenses/[name]', toType: 'template' },
-            { from: './src/assets/DISTLICENSE', to: 'LICENSE', toType: 'file' },
-            { from: './src/assets/HallOfFame', to: 'HallOfFame', toType: 'file' },
-            { from: './src/_locales', to: '_locales', toType: 'dir' },
-            { from: './src/*.html', to: 'html/[name].[ext]', toType: 'template' },
-            { from: './src/manifest.json', to: 'manifest.json', toType: 'file' }
+            {
+                from: './src/assets/icons/*.png',
+                to: 'icons/[name].[ext]',
+                toType: 'template'
+            },
+            {
+                from: './src/assets/licenses/*',
+                to: 'licenses/[name]',
+                toType: 'template'
+            },
+            {
+                from: './src/assets/DISTLICENSE',
+                to: 'LICENSE',
+                toType: 'file'
+            },
+            {
+                from: './src/assets/HallOfFame',
+                to: 'HallOfFame',
+                toType: 'file'
+            },
+            {
+                from: './src/_locales',
+                to: '_locales',
+                toType: 'dir'
+            },
+            {
+                from: './src/*.html',
+                to: 'html/[name].[ext]',
+                toType: 'template'
+            },
+            {
+                from: process.env.NODE_ENV !== 'production'
+                        ? 'src/manifest-dev.json'
+                        : './src/manifest.json',
+                to: 'manifest.json',
+                toType: 'file'
+            }
         ]),
         new MiniCssExtractPlugin({
             filename: 'css/[name].css'
         })
-    ],
-    // TODO(luciusgone): remove this when building releases
-    optimization: {
-        minimize: false
-    },
-    // TODO(luciusgone): remove this when building releases
-    performance: {
-        hints: false
-    }
+    ]
 };
