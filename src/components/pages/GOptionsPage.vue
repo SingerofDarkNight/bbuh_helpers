@@ -1,7 +1,7 @@
 <template>
-<main role="main">
-    <GOptionsPanel class="optionpanel"></GOptionsPanel>
-</main>
+  <main role="main">
+    <GOptionsPanel class="optionpanel" />
+  </main>
 </template>
 
 <script>

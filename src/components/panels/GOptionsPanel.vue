@@ -1,68 +1,118 @@
 <template>
-<div v-if="loaded">
+  <div v-if="loaded">
     <h2>{{ _('settingsHeading') }}</h2>
     <p>{{ _('settingsNotice') }}</p>
     <section>
-        <h3>{{ _('userLevelsHeading') }}</h3>
-        <p>{{ _('userLevelsNotice') }}</p>
-        <input type="text" v-model.trim="userlevels">
-        <button type="button" v-on:click="saveUserLevels">{{ _('labelSave')  }}</button>
+      <h3>{{ _('userLevelsHeading') }}</h3>
+      <p>{{ _('userLevelsNotice') }}</p>
+      <input
+        v-model.trim="userlevels"
+        type="text"
+      >
+      <button
+        type="button"
+        @click="saveUserLevels"
+      >
+        {{ _('labelSave') }}
+      </button>
     </section>
     <section>
-        <h3>{{ _('mainPostLabelHeading') }}</h3>
-        <p>{{ _('mainPostLabelNotice') }}</p>
-        <input type="text" v-model.trim="main_post_label">
-        <button type="button" v-on:click="saveText('main_post_label')">{{ _('labelSave')  }}</button>
+      <h3>{{ _('mainPostLabelHeading') }}</h3>
+      <p>{{ _('mainPostLabelNotice') }}</p>
+      <input
+        v-model.trim="main_post_label"
+        type="text"
+      >
+      <button
+        type="button"
+        @click="saveText('main_post_label')"
+      >
+        {{ _('labelSave') }}
+      </button>
     </section>
     <section>
-        <h3>{{ _('emotionsHeading') }}</h3>
-        <p>{{ _('emotionsNotice') }}</p>
-        <input type="text" v-model.trim="todaysay">
-        <button type="button" v-on:click="saveText('todaysay')">{{ _('labelSave')  }}</button>
+      <h3>{{ _('emotionsHeading') }}</h3>
+      <p>{{ _('emotionsNotice') }}</p>
+      <input
+        v-model.trim="todaysay"
+        type="text"
+      >
+      <button
+        type="button"
+        @click="saveText('todaysay')"
+      >
+        {{ _('labelSave') }}
+      </button>
     </section>
     <section>
-        <h3>{{ _('switchesHeading') }}</h3>
-        <p>
-            <input type="checkbox"
-                   name="enable_auto_sign"
-                   v-model="enable_auto_sign"
-                   v-on:change="toggle('enable_auto_sign')">
-            <label for="enable_auto_sign">{{ _('labelEnableAutoSign') }}</label>
-        </p>
-        <p>
-            <input type="checkbox"
-                   name="enable_farm_kit"
-                   v-model="enable_farm_kit"
-                   v-on:change="toggle('enable_farm_kit')">
-            <label for="enable_farm_kit">{{ _('labelEnableFarmKit') }}</label>
-        </p>
-        <p>
-            <input type="checkbox"
-                   name="enable_blacklist"
-                   v-model="enable_blacklist"
-                   v-on:change="toggle('enable_blacklist')">
-            <label for="enable_blacklist">{{ _('labelEnableBlacklist') }}</label>
-        </p>
-        <p>
-            <input type="checkbox"
-                   name="enable_extemojis"
-                   v-model="enable_extemojis"
-                   v-on:change="toggle('enable_extemojis')">
-            <label for="enable_extemojis">{{ _('labelEnableExtraEmojis') }}</label>
-        </p>
+      <h3>{{ _('switchesHeading') }}</h3>
+      <p>
+        <input
+          v-model="enable_auto_sign"
+          type="checkbox"
+          name="enable_auto_sign"
+          @change="toggle('enable_auto_sign')"
+        >
+        <label for="enable_auto_sign">
+          {{ _('labelEnableAutoSign') }}
+        </label>
+      </p>
+      <p>
+        <input
+          v-model="enable_farm_kit"
+          type="checkbox"
+          name="enable_farm_kit"
+          @change="toggle('enable_farm_kit')"
+        >
+        <label for="enable_farm_kit">
+          {{ _('labelEnableFarmKit') }}
+        </label>
+      </p>
+      <p>
+        <input
+          v-model="enable_blacklist"
+          type="checkbox"
+          name="enable_blacklist"
+          @change="toggle('enable_blacklist')"
+        >
+        <label for="enable_blacklist">
+          {{ _('labelEnableBlacklist') }}
+        </label>
+      </p>
+      <p>
+        <input
+          v-model="enable_extemojis"
+          type="checkbox"
+          name="enable_extemojis"
+          @change="toggle('enable_extemojis')"
+        >
+        <label for="enable_extemojis">
+          {{ _('labelEnableExtraEmojis') }}
+        </label>
+      </p>
     </section>
     <section>
-        <h3>{{ _('importExportHeading') }}</h3>
-        <div class="controlls">
-            <label class="btn">{{ _('labelImport') }}<input type="file" accept=".json" v-on:change="importData">
-            </label>
-            <button type="button" v-on:click="exportData">{{ _('labelExport') }}</button>
-        </div>
+      <h3>{{ _('importExportHeading') }}</h3>
+      <div class="controlls">
+        <label class="btn">
+          {{ _('labelImport') }}<input
+            type="file"
+            accept=".json"
+            @change="importData"
+          >
+        </label>
+        <button
+          type="button"
+          @click="exportData"
+        >
+          {{ _('labelExport') }}
+        </button>
+      </div>
     </section>
-</div>
-<div v-else>
+  </div>
+  <div v-else>
     <p>{{ _('labelLoading') }}</p>;
-</div>
+  </div>
 </template>
 
 <script>
@@ -136,20 +186,21 @@ export default {
             if (file) {
                 let reader = new FileReader();
                 let items = await storage.getAll();
-                reader.onload = function(ev) {
+                reader.onload = function(event) {
                     try {
-                        const parsed = JSON.parse(ev.target.result);
+                        const parsed = JSON.parse(event.target.result);
                         items = merge(items, parsed);
                         storage.seed(items);
                     } catch (e) {
-                        console.log(e);
+                        alert('Wrong JSON format.');
                     }
-                }
+                };
 
-                reader.onerror = function(ev) {
-                    reaer.abort();
-                    alert("Wrong file");
-                }
+                // eslint-disable-next-line no-unused-vars
+                reader.onerror = function(event) {
+                    reader.abort();
+                    alert('Wrong file');
+                };
 
                 reader.readAsText(file);
             }

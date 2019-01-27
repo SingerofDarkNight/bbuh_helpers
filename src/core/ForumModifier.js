@@ -6,7 +6,7 @@ export class BlockThreadByBlacklist {
     isThread(node) {
         return node.nodeName.toLowerCase() == 'tbody' &&
             node.hasAttribute('id') &&
-            node.getAttribute('id').match(/(stickthread|normalthread)(\_\d+)/);
+            node.getAttribute('id').match(/(stickthread|normalthread)(_\d+)/);
     }
 
     blockByAuthor(author, node) {
@@ -49,7 +49,7 @@ export class BlockReplyByBlacklist {
     isPost(node) {
         return node.nodeName.toLowerCase() == 'div' &&
             node.hasAttribute('id') &&
-            node.getAttribute('id').match(/post\_\d+/);
+            node.getAttribute('id').match(/post_\d+/);
     }
 
     run(node) {
@@ -73,7 +73,7 @@ export class BlockReplyByUserGroups {
     isPost(node) {
         return node.nodeName.toLowerCase() == 'div' &&
             node.hasAttribute('id') &&
-            node.getAttribute('id').match(/post\_\d+/);
+            node.getAttribute('id').match(/post_\d+/);
     }
 
     run(node) {
@@ -121,6 +121,7 @@ export class ForumModifier {
         this.observeOpts = observeOpts || { childList: true, subtree: true };
     }
 
+    // eslint-disable-next-line no-unused-vars
     observerCallback(mutationList, observer) {
         const operations = this.operations;
 

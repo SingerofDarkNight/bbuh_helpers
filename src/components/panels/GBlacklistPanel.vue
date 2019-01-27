@@ -1,30 +1,50 @@
 <template>
-<div v-if="loaded && !disabled">
+  <div v-if="loaded && !disabled">
     <div>
-        <input v-model.trim="keyword" type="text" placeholder="user/keyword"></input>
-        <div class="controlls">
-            <button v-on:click="add('user')">{{ _('blockUserButton') }}</button>
-            <button v-on:click="add('keyword')">{{ _('blockWordButton') }}</button>
-        </div>
+      <input
+        v-model.trim="keyword"
+        type="text"
+        placeholder="user/keyword"
+      >
+      <div class="controlls">
+        <button @click="add('user')">
+          {{ _('blockUserButton') }}
+        </button>
+        <button @click="add('keyword')">
+          {{ _('blockWordButton') }}
+        </button>
+      </div>
     </div>
     <div v-if="!isEmpty(blacklist)">
-        <h2>{{ _('blacklistHeading') }}</h2>
-        <div id="listcontainer">
-            <p class="listitem" v-for="(type, word) in blacklist">
-                <span class="keyword">{{ word }}</span>
-                <span class="type">{{ _(type + 'BlacklistType') }}</span>
-                <span class="remove"
-                      v-on:click="remove(word)"
-                      v-bind:title="_('deleteTooltip')">
-                    <font-awesome-icon icon="trash-alt"></font-awesome-icon>
-                </span>
-            </p>
-        </div>
+      <h2>{{ _('blacklistHeading') }}</h2>
+      <div id="listcontainer">
+        <p
+          v-for="(type, word) in blacklist"
+          :key="word"
+          class="listitem"
+        >
+          <span class="keyword">
+            {{ word }}
+          </span>
+          <span class="type">
+            {{ _(type + 'BlacklistType') }}
+          </span>
+          <span
+            class="remove"
+            :title="_('deleteTooltip')"
+            @click="remove(word)"
+          >
+            <font-awesome-icon icon="trash-alt" />
+          </span>
+        </p>
+      </div>
     </div>
-</div>
-<div v-else>
-    <p class="warning">{{ _('labelBlacklistDisabled') }}</p>
-</div>
+  </div>
+  <div v-else>
+    <p class="warning">
+      {{ _('labelBlacklistDisabled') }}
+    </p>
+  </div>
 </template>
 
 <script>

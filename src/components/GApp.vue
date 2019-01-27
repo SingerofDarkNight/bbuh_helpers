@@ -1,14 +1,23 @@
 <template>
-<div id="app">
+  <div id="app">
     <header>
-        <h1>{{ _('extName') }}</h1>
-        <button v-on:click="toggleOptionsPage">
-            <font-awesome-icon v-if="isOptionsPageVisible" icon="window-close"></font-awesome-icon>
-            <font-awesome-icon v-else icon="cogs"></font-awesome-icon>
-        </button>
+      <h1>{{ _('extName') }}</h1>
+      <button @click="toggleOptionsPage">
+        <font-awesome-icon
+          v-if="isOptionsPageVisible"
+          icon="window-close"
+        />
+        <font-awesome-icon
+          v-else
+          icon="cogs"
+        />
+      </button>
     </header>
-    <component v-bind:is="currentPage" class="main"></component>
-</div>
+    <component
+      :is="currentPage"
+      class="main"
+    />
+  </div>
 </template>
 
 <script>
@@ -17,18 +26,18 @@ import GOptionsPage from './pages/GOptionsPage.vue';
 
 export default {
     name: 'GApp',
+    components: {
+        GTabsPage,
+        GOptionsPage
+    },
     data() {
         return {
             isOptionsPageVisible: false
         };
     },
-    components: {
-        GTabsPage,
-        GOptionsPage
-    },
     computed: {
         currentPage() {
-            return this.isOptionsPageVisible ? "GOptionsPage" : "GTabsPage";
+            return this.isOptionsPageVisible ? 'GOptionsPage' : 'GTabsPage';
         }
     },
     methods: {
@@ -74,6 +83,9 @@ export default {
 
     section {
         padding: 3px 5px;
+        margin: 3px 5px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
     }
 
     .btn, button {
@@ -102,7 +114,7 @@ export default {
     textarea {
         width: 100%;
         height: 120px;
-        border: 1px solid black;
+        border: 1px solid #ccc;
         border-radius: 5px;
         padding: 5px 5px;
         margin: 5px 0;

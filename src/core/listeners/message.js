@@ -4,7 +4,7 @@ export default function messageHandler(request, sender, sendResponse) {
         if (el) {
             var username = el.textContent;
             var uid = el.href.match(/\d+/)[0];
-            sendResponse({"username": username, "uid": uid});
+            sendResponse({'username': username, 'uid': uid});
         }
     }
 }

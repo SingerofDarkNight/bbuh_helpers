@@ -36,7 +36,7 @@ class EmojiKit {
         emoji.width = this.width;
         emoji.height = this.height;
 
-        r.insertNode(emoji)
+        r.insertNode(emoji);
         r.collapse();
         editor.contentDocument.body.focus();
     }
@@ -53,7 +53,7 @@ class EmojiKit {
 
         const emoji = `[img=${this.width},${this.height}]${this.src}[/img]`;
         const new_val = start + emoji + end;
-        const index = start.length + emoji.length
+        const index = start.length + emoji.length;
 
         editor.value = new_val;
         editor.setSelectionRange(index, index);
@@ -188,6 +188,7 @@ class ExtraEmojisPreviewer {
         this.activeSet = set;
     }
 
+    // eslint-disable-next-line no-unused-vars
     hide(event) {
         setTimeout(() => this.node.style.display = 'none', 300);
     }
@@ -219,7 +220,7 @@ export default class ExtraEmojis {
         a.style = buttonStyle;
 
         let img = document.createElement('img');
-        img.setAttribute('src', this.button_url)
+        img.setAttribute('src', this.button_url);
         img.setAttribute('width', '24');
         img.setAttribute('height', '24');
         img.style = buttonImgStyle;
