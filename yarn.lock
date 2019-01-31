@@ -1264,10 +1264,9 @@ chownr@^1.0.1, chownr@^1.1.1:
   resolved "https://registry.yarnpkg.com/chownr/-/chownr-1.1.1.tgz#54726b8b8fff4df053c42187e801fb4412df1494"
   integrity sha512-j38EvO5+LHX84jlo6h4UzmOwi0UgW61WRyPtJz4qaadK5eY3BTS5TY/S1Stc3Uk2lIM6TPevAlULiEJwie860g==
 
-chrome-extension-async@^3.3.0:
+"chrome-extension-async@https://github.com/KeithHenry/chromeExtensionAsync":
   version "3.3.0"
-  resolved "https://registry.yarnpkg.com/chrome-extension-async/-/chrome-extension-async-3.3.0.tgz#bdfc4badfdd76cbf05e7701bb362d7cdd8fdd414"
-  integrity sha512-TkYZDOlNDcDomyfY8FRVVuhmdHUVyrA7Q7rx6OmFLBSjfVYbIAI+pNUcx9qWBogW48oMSb7eQMPg7kwub3XAvg==
+  resolved "https://github.com/KeithHenry/chromeExtensionAsync#afb804c55c99fdcb7ae18fab61f7500016c3aabf"
 
 chrome-trace-event@^1.0.0:
   version "1.0.0"
