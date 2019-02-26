@@ -111,10 +111,6 @@
         "message": "Options",
         "description": "settings Heading"
     },
-    "settingNotice": {
-        "message": "Know What You Do and Change It.",
-        "description": "Setting Notice"
-    },
     "userLevelsHeading": {
         "message": "User Levels",
         "description": "User levels heading"

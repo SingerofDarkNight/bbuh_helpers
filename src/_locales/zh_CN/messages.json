@@ -111,10 +111,6 @@
         "message": "设置",
         "description": "settings Heading"
     },
-    "settingNotice": {
-        "message": "更改时请慎重",
-        "description": "Setting Notice"
-    },
     "userLevelsHeading": {
         "message": "用户等级",
         "description": "User levels heading"

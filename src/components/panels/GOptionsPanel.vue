@@ -1,7 +1,6 @@
 <template>
   <div v-if="loaded">
     <h2>{{ _('settingsHeading') }}</h2>
-    <p>{{ _('settingsNotice') }}</p>
     <section>
       <h3>{{ _('userLevelsHeading') }}</h3>
       <p>{{ _('userLevelsNotice') }}</p>
