@@ -7,12 +7,14 @@
         placeholder="user/keyword"
       >
       <div class="controlls">
-        <button @click="add('user')">
-          {{ _('blockUserButton') }}
-        </button>
-        <button @click="add('keyword')">
-          {{ _('blockWordButton') }}
-        </button>
+        <GButton
+          text="blockUserButton"
+          @action="add('user')"
+        />
+        <GButton
+          text="blockWordButton"
+          @action="add('keyword')"
+        />
       </div>
     </div>
     <div v-if="!isEmpty(blacklist)">
@@ -48,11 +50,16 @@
 </template>
 
 <script>
+import GButton from '../base/GButton.vue';
+
 import storage from '../../core/base/storage.js';
 import isEmpty from '../mixins/isEmpty.js';
 
 export default {
     name: 'GBlacklistPanel',
+    components: {
+        GButton
+    },
     mixins: [isEmpty],
     data() {
         return {

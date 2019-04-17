@@ -6,18 +6,16 @@
       </span>
     </p>
     <div class="controlls">
-      <button
-        :title="_('addTooltip')"
-        @click="create"
-      >
-        <font-awesome-icon icon="plus" />
-      </button>
-      <button
-        :title="_('emptyTooltip')"
-        @click="switchToEmpty"
-      >
-        <font-awesome-icon icon="eraser" />
-      </button>
+      <GButton
+        tooltip="addTooltip"
+        icon="plus"
+        @action="create"
+      />
+      <GButton
+        tooltip="emptyTooltip"
+        icon="eraser"
+        @action="switchToEmpty"
+      />
     </div>
     <div v-if="!isEmpty(profiles)">
       <h2>{{ _('profileListHeading') }}</h2>
@@ -54,6 +52,8 @@
 </template>
 
 <script>
+import GButton from '../base/GButton.vue';
+
 import cookies from '../../core/base/cookies.js';
 import messages from '../../core/base/messages.js';
 import storage from '../../core/base/storage.js';
@@ -61,6 +61,9 @@ import isEmpty from '../mixins/isEmpty.js';
 
 export default {
     name: 'GProfilesPanel',
+    components: {
+        GButton
+    },
     mixins: [isEmpty],
     data() {
         return {

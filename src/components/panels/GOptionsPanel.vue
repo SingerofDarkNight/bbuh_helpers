@@ -8,12 +8,10 @@
         v-model.trim="userlevels"
         type="text"
       >
-      <button
-        type="button"
-        @click="saveUserLevels"
-      >
-        {{ _('labelSave') }}
-      </button>
+      <GButton
+        text="labelSave"
+        @action="saveUserLevels"
+      />
     </section>
     <section>
       <h3>{{ _('mainPostLabelHeading') }}</h3>
@@ -22,12 +20,10 @@
         v-model.trim="main_post_label"
         type="text"
       >
-      <button
-        type="button"
-        @click="saveText('main_post_label')"
-      >
-        {{ _('labelSave') }}
-      </button>
+      <GButton
+        text="labelSave"
+        @action="saveText('main_post_label')"
+      />
     </section>
     <section>
       <h3>{{ _('emotionsHeading') }}</h3>
@@ -36,12 +32,10 @@
         v-model.trim="todaysay"
         type="text"
       >
-      <button
-        type="button"
-        @click="saveText('todaysay')"
-      >
-        {{ _('labelSave') }}
-      </button>
+      <GButton
+        text="labelSave"
+        @action="saveText('todaysay')"
+      />
     </section>
     <section>
       <h3>{{ _('switchesHeading') }}</h3>
@@ -100,12 +94,10 @@
             @change="importData"
           >
         </label>
-        <button
-          type="button"
-          @click="exportData"
-        >
-          {{ _('labelExport') }}
-        </button>
+        <GButton
+          text="labelExport"
+          @action="exportData"
+        />
       </div>
     </section>
   </div>
@@ -115,11 +107,16 @@
 </template>
 
 <script>
+import GButton from '../base/GButton.vue';
+
 import merge from '../../core/base/merge.js';
 import storage from '../../core/base/storage.js';
 
 export default {
     name: 'GOptionsPanel',
+    components: {
+        GButton
+    },
     data() {
         return {
             loaded: false,

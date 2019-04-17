@@ -5,30 +5,30 @@
       :placeholder="_('encodingHint')"
     />
     <div class="controlls">
-      <button
-        type="button"
-        :title="_('encodeTooltip')"
-        @click="encodeMessage"
-      >
-        <font-awesome-icon icon="angle-double-down" />
-      </button>
-      <button
-        type="button"
-        :title="_('decodeTooltip')"
-        @click="decodeMessage"
-      >
-        <font-awesome-icon icon="angle-double-up" />
-      </button>
+      <GButton
+        tooltip="encodeTooltip"
+        icon="angle-double-down"
+        @action="encodeMessage"
+      />
+      <GButton
+        tooltip="decodeTooltip"
+        icon="angle-double-up"
+        @action="decodeMessage"
+      />
     </div>
     <textarea v-model.trim="encoded" />
   </div>
 </template>
 
 <script>
+import GButton from '../base/GButton.vue';
 import gotham from 'gotham-encoder';
 
 export default {
     name: 'GEncodingPanel',
+    components: {
+        GButton
+    },
     data() {
         return {
             decoded: '',
