@@ -1,3 +1,3 @@
-export const bbuh_domain = 'bbuhot.com';
+export const bbuh_domain = 'dota2.me';
 
-export const bbuh_site_url = 'https://bbs.bbuhot.com';
+export const bbuh_site_url = 'https://91.dota2.me';

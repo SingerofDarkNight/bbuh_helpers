@@ -1,6 +1,6 @@
 {
     "name": "__MSG_extName__",
-    "version": "0.2.2",
+    "version": "0.2.3",
     "description": "__MSG_extDescription__",
     "default_locale": "zh_CN",
     "icons": {
@@ -13,15 +13,15 @@
         "persistent": false
     },
     "content_scripts": [{
-        "matches": ["https://bbs.bbuhot.com/*"],
+        "matches": ["https://91.dota2.me/*"],
         "js": ["js/document_start.js"],
         "run_at": "document_start"
     }, {
-        "matches": ["https://bbs.bbuhot.com/*"],
+        "matches": ["https://91.dota2.me/*"],
         "js": ["js/document_end.js"],
         "run_at": "document_end"
     }, {
-        "matches": ["https://bbs.bbuhot.com/*"],
+        "matches": ["https://91.dota2.me/*"],
         "js": ["js/document_idle.js"]
     }],
     "page_action": {
@@ -32,7 +32,7 @@
         "tabs",
         "cookies",
         "storage",
-        "https://bbs.bbuhot.com/*"
+        "https://91.dota2.me/*"
     ],
     "web_accessible_resources": [
         "icons/icon48x48.png"
